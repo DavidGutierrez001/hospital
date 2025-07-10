@@ -1,0 +1,169 @@
+[data-theme="dark"] {
+	--input: #333333;
+	--input-box-shadow: none;
+}
+
+[data-theme="light"] {
+	--input: #f8f8f8;
+	--input-box-shadow: none;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+body,
+html {
+	margin: 0;
+	padding: 0;
+	font-family: "Poppins", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+label,
+.form-label,
+p,
+span {
+	margin: 0;
+	padding: 0;
+	color: var(--texto);
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.bt {
+	border: red solid;
+}
+
+.form-select {
+	background-color: var(--input);
+	color: var(--texto);
+	outline: none;
+	border: 0;
+	transition: all 0.3s ease-in-out;
+}
+
+.form-select:focus {
+	box-shadow: var(--input-box-shadow);
+	transition: all 0.3s ease-in-out;
+}
+
+.form-select:hover {
+	cursor: pointer;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="date"],
+input[type="time"],
+input[type="search"],
+input[type="url"],
+input[type="file"],
+select,
+textarea {
+	border: 0;
+	border-radius: 4px;
+	padding: 8px;
+	width: 100%;
+	box-sizing: border-box;
+	font-size: 1rem;
+	height: 2.8rem;
+	background-color: var(--input);
+	transition: all 0.3s ease-in-out;
+	box-shadow: var(--input-box-shadow);
+	color: var(--texto);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="search"]:focus,
+input[type="url"]:focus,
+input[type="file"]:focus,
+select:focus,
+textarea:focus {
+	outline: none;
+	box-shadow: var(--input-box-shadow);
+	transition: all 0.3s ease-in-out;
+	background-color: var(--input);
+	color: var(--texto);
+}
+
+label {
+	display: block;
+	font-weight: 500;
+	opacity: 0.7;
+	font-size: 0.9rem;
+}
+
+button {
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+
+.form-control::placeholder {
+	font-size: 0.9rem;
+	color: #dfdfdf;
+}
+
+.fs-8 {
+	font-size: 0.8rem;
+}
+
+.lh-3 {
+	line-height: 3;
+}
+
+.lh-2-5 {
+	line-height: 2.5;
+}
+
+.input-error {
+	box-shadow: 0 0 8px rgb(255, 198, 198);
+}
+
+.title-module {
+	color: #5ead5e;
+	background-image: linear-gradient(135deg, #5ead5e, #009771 50%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.loader-button {
+	width: 25px;
+	height: 25px;
+	border: 2.5px solid #fff;
+	border-bottom-color: transparent;
+	border-radius: 50%;
+	display: inline-block;
+	box-sizing: border-box;
+	animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

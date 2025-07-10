@@ -1,0 +1,81 @@
+.content-module {
+	display: flex;
+	flex-direction: row;
+}
+
+.calendar-content {
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+	border: none;
+	border-radius: 1rem;
+	min-height: calc(100vh - 60px - 5rem);
+	transition: all 0.3s ease-in-out;
+}
+
+
+
+.fc {
+	font-size: 0.8rem;
+	background-color: var(--fondo-secundario);
+	color: #4e995f;
+	transition: background-color 0.3s ease-in-out;
+}
+
+.fc-icon {
+	color: white;
+}
+
+.fc-button {
+	background-color: #4e995f !important;
+	border: 0 !important;
+}
+
+.fc-list-day-cushion {
+	background-color: var(--fondo-terciario) !important;
+	transition: all 0.3s ease-in-out;
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.fc-listWeek-view {
+	border: none !important;
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+	border-radius: 0.5rem !important;
+	overflow: hidden;
+}
+
+.fc-toolbar-title {
+	font-size: clamp(0.7rem, 1.5vw, 0.8rem) !important;
+	padding: 0px 5px;
+}
+
+.fc-toolbar-chunk {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.fc-daygrid-day-number {
+	color: var(--texto);
+}
+
+.fc-daygrid-day-top {
+	border-radius: 5px;
+}
+
+.medico-radio-label {
+	opacity: 1;
+}
+
+.fc-list-empty {
+	background-color: var(--fondo-secundario) !important;
+	transition: all 0.3s ease-in-out !important;
+}
+
+.fc-header-toolbar {
+	gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+	.content-module {
+		flex-direction: column;
+	}
+}

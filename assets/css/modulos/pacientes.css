@@ -1,0 +1,16 @@
+@media (max-width: 768px) {
+	.target-pacientes {
+		max-height: auto;
+		width: 100%;
+	}
+
+	.content-edit {
+		height: 100%;
+		justify-content: center;
+	}
+
+	.btn-action {
+		height: 50px;
+		padding-block: 0;
+	}
+}

@@ -1,0 +1,171 @@
+.bg-form {
+	background-color: hsla(217, 100%, 94%, 1);
+	background-image: radial-gradient(
+			at 72% 75%,
+			hsla(330, 100%, 96%, 1) 0px,
+			transparent 50%
+		),
+		radial-gradient(at 25% 39%, rgb(231, 245, 255) 0px, transparent 50%),
+		radial-gradient(at 89% 31%, rgb(231, 251, 255) 0px, transparent 50%);
+	min-height: 100vh;
+}
+
+.form {
+	background: rgba(255, 255, 255, 0.47);
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(19.6px);
+	-webkit-backdrop-filter: blur(19.6px);
+	border: 1px solid rgba(255, 255, 255, 0.44);
+	max-width: 500px;
+	width: 100%;
+	transition: all 0.3s ease-in-out;
+	overflow: hidden;
+	min-height: 515px;
+}
+
+.text-pass1 {
+	font-size: 0.8rem;
+}
+
+#stepTitle {
+	color: #5d5df0;
+	background-image: linear-gradient(45deg, #5d5df0, #d75df0 73%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+#btnNext {
+	height: 50px;
+}
+
+#btnBack {
+	background-color: #ffffff00;
+	border-radius: 4px;
+	padding: 0.5rem 1rem;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.2s ease-in-out;
+}
+
+#btnBack:hover {
+	background-color: rgba(0, 0, 0, 0.041);
+}
+
+.step-1 {
+	transform: translateX(calc(-100% - 3rem));
+	opacity: 1;
+	transition: all 0.3s ease-in-out, opacity 0.4s ease-out;
+	min-width: 100%;
+}
+
+.step-1.active {
+	transform: translateX(0);
+	opacity: 1;
+}
+
+.step-2 {
+	transition: all 0.3s ease-in-out, opacity 0.4s ease-out;
+	opacity: 1;
+	transform: translateX(0);
+	min-width: 100%;
+}
+
+.step-2.active {
+	opacity: 1;
+	transform: translateX(calc(-100% - 3rem));
+}
+
+.bg-purple {
+	background-color: #5e5df0;
+}
+
+.bg-purple:hover {
+	background-color: #4a4ad0;
+}
+
+.text-purple {
+	color: #5e5df0;
+}
+
+.bi-envelope-at-fill {
+	font-size: 1.3rem;
+	left: 1.5rem;
+}
+
+.bi-shield-lock-fill {
+	font-size: 1.3rem;
+	left: 1.5rem;
+}
+
+.bi-eye-slash-fill,
+.bi-eye-fill {
+	font-size: 1.3rem;
+	right: 1rem;
+}
+
+.bi-eye-slash-fill:hover,
+.bi-eye-fill:hover {
+	cursor: pointer;
+	background-color: #f0f0f0;
+	border-radius: 50%;
+}
+
+.shake-horizontal {
+	animation: shake-horizontal 0.8s 0.7 both;
+}
+
+@keyframes shake-horizontal {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+	10%,
+	30%,
+	50%,
+	70% {
+		transform: translateX(-10px);
+	}
+	20%,
+	40%,
+	60% {
+		transform: translateX(10px);
+	}
+	80% {
+		transform: translateX(8px);
+	}
+	90% {
+		transform: translateX(-8px);
+	}
+}
+
+.login-link {
+	transition: all 0.2s ease-in-out;
+}
+
+.login-link:hover {
+	text-decoration: underline;
+	color: #000000;
+	cursor: pointer;
+}
+
+.error-email {
+	color: red;
+	font-size: 0.8rem;
+	background-color: rgb(255, 215, 215);
+	padding: 0.7rem;
+	border-radius: 3px;
+}
+
+.btn-create-account:hover {
+	scale: 1.02;
+}
+
+.btn-create-account {
+	background-image: linear-gradient(
+		45deg,
+		rgba(94, 93, 240, 0.8) 0%,
+		rgba(188, 133, 244, 0.8) 100%
+	);
+}
