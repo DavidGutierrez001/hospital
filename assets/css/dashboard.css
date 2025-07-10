@@ -451,17 +451,23 @@ table.dataTable span.dt-column-order {
 .status-canceled {
 	color: #d9544fc7;
 	font-weight: 500;
-	background-color: rgba(255, 0, 0, 0.096);
 	padding: 0.3rem 0.7rem;
 	border-radius: 50px;
 }
 
-.status-programada {
+.status-pending {
+	color: #7a7a7a;
+	font-weight: 500;
+	padding: 0.3rem 0.7rem;
+	border-radius: 50px
+}
+
+.status-success {
 	color: #5bb770;
 	font-weight: 500;
-	background-color: rgba(91, 183, 112, 0.096);
 	padding: 0.3rem 0.7rem;
 	border-radius: 50px;
+
 }
 
 @media (max-width: 768px) {

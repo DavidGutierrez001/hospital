@@ -38,7 +38,7 @@
                                             <label for="especialidades">Especialidad del médico</label>
                                             <select id="especialidades" name="especialidad" class="form-select" required>
                                                 <option value="" disabled selected>Seleccionar</option>
-                                                <?php foreach ($especialidades as $especialidad): ?>
+                                                <?php foreach ($especialidades as $especialidad) : ?>
                                                     <option value="<?= htmlspecialchars($especialidad->id_especialidad) ?>">
                                                         <?= htmlspecialchars($especialidad->nombre_especialidad) ?>
                                                     </option>
@@ -93,8 +93,8 @@
                     <th>ACCIONES</th>
                 </thead>
                 <tbody>
-                    <?php if (count($citas) > 0): ?>
-                        <?php foreach ($citas as $cita): ?>
+                    <?php if (count($citas) > 0) : ?>
+                        <?php foreach ($citas as $cita) : ?>
                             <tr>
                                 <td class="text-center"><?= htmlspecialchars($cita->id_cita) ?></td>
                                 <td><?= date('d/m/Y', strtotime($cita->fecha_cita)) ?></td>
@@ -102,11 +102,17 @@
                                 <td><?= htmlspecialchars($cita->primer_nombre) . ' ' . htmlspecialchars($cita->primer_apellido) ?></td>
                                 <td><?= htmlspecialchars($cita->medico_nombre) . ' ' . htmlspecialchars($cita->medico_apellido) ?></td>
                                 <td>
-                                    <span class="<?= htmlspecialchars($cita->estado_cita) == 'Cancelada' ? 'status-canceled' : 'status-programada' ?>""><?= htmlspecialchars($cita->estado_cita) ?></span>
+                                    <span class="<?=
+                                                    htmlspecialchars($cita->estado_cita) == 'Cancelada' ? 'status-canceled' : 
+                                                    (htmlspecialchars($cita->estado_cita) == 'Asistida' ? 'status-success' : 
+                                                    (htmlspecialchars($cita->estado_cita) == 'Programada' ? 'status-pending' : ''))
+                                                    ?>">
+                                        <?= htmlspecialchars($cita->estado_cita) ?>
+                                    </span>
                                 </td>
                                 <td>
                                     <div>
-                                        <?php if (htmlspecialchars($cita->estado_cita) == 'Programada'): ?>
+                                        <?php if (htmlspecialchars($cita->estado_cita) == 'Programada') : ?>
                                             <button class="btnDelete btn btn-danger btn-sm" data-id="<?= htmlspecialchars($cita->id_cita) ?>">
                                                 <i class="bi bi-x-lg"></i>
                                             </button>
@@ -117,7 +123,7 @@
                                 </td>
                             </tr>
                         <?php endforeach; ?>
-                    <?php else: ?>
+                    <?php else : ?>
                         <tr>
                             <td colspan="7" class="text-center">No hay citas programadas.</td>
                         </tr>
