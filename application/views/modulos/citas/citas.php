@@ -106,7 +106,7 @@
                                                     htmlspecialchars($cita->estado_cita) == 'Cancelada' ? 'status-canceled' : 
                                                     (htmlspecialchars($cita->estado_cita) == 'Asistida' ? 'status-success' : 
                                                     (htmlspecialchars($cita->estado_cita) == 'Programada' ? 'status-pending' : ''))
-                                                    ?>">
+                                                ?>">
                                         <?= htmlspecialchars($cita->estado_cita) ?>
                                     </span>
                                 </td>
