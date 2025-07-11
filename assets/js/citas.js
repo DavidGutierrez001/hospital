@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
 	loadCalendar();
 	function loadCalendar() {
 		const calendarEl = document.querySelector("#calendar");
@@ -7,20 +6,25 @@ document.addEventListener("DOMContentLoaded", function () {
 			initialView: "listMonth",
 			themeSystem: "bootstrap5",
 			headerToolbar: {
-				left: "prev,next",
-				center: "listMonth",
-				right: "dayGridMonth,timeGridWeek,timeGridDay",
+				left: "",
+				center: "listDay,listWeek,listMonth",
+				right: "",
 			},
 			height: "100%",
 			selectable: false,
 			locale: "es",
+			timeZone: "local",
+			eventTimeFormat: {
+				hour: "numeric",
+				minute: "2-digit",
+				hour12: true,
+			},
 			events: "/hospital/citas/get_next_citas_json",
 			buttonText: {
 				today: "Hoy",
 				month: "Mes",
 				week: "Semana",
 				day: "Día",
-				list: "Lista",
 			},
 		});
 		calendar.render();

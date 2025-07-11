@@ -127,17 +127,16 @@
 
                                                                 <div class="mb-3">
                                                                     <label for="nueva_fecha<?= $cita->id_cita ?>" class="form-label">Nueva fecha</label>
-                                                                    <input type="date" name="fecha_cita" id="nueva_fecha<?= $cita->id_cita ?>" class="form-control">
+                                                                    <input type="date" name="fecha_cita" id="nueva_fecha<?= $cita->id_cita ?>" value="<?= $cita->fecha_cita ?>" class="form-control">
                                                                 </div>
 
                                                                 <div class="mb-3">
                                                                     <label for="nueva_hora<?= $cita->id_cita ?>" class="form-label">Nueva hora</label>
-                                                                    <input type="time" name="hora_inicio" id="nueva_hora<?= $cita->id_cita ?>" class="form-control">
+                                                                    <input type="time" name="hora_inicio" id="nueva_hora<?= $cita->id_cita ?>" value="<?= $cita->hora_inicio ?>" class="form-control">
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                                <button type="button" id="btnReagendar" class="btn btn-success">Reagendar</button>
+                                                                <button type="button" id="btnReagendar" class="btn-action w-100">Reagendar</button>
                                                             </div>
                                                         </form>
                                                     </div>

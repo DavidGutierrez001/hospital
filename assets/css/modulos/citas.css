@@ -9,6 +9,12 @@
 	border-radius: 1rem;
 	min-height: calc(100vh - 60px - 5rem);
 	transition: all 0.3s ease-in-out;
+	max-width: 350px;
+	width: 100%;
+}
+
+.fc-view {
+	border: 0 !important;
 }
 
 .fc {
@@ -66,10 +72,6 @@
 .fc-list-empty {
 	background-color: var(--fondo-secundario) !important;
 	transition: all 0.3s ease-in-out !important;
-}
-
-.fc-header-toolbar {
-	gap: 0.5rem;
 }
 
 @media (max-width: 768px) {

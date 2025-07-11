@@ -172,8 +172,7 @@ class CitasController extends CI_Controller
             foreach ($citas as $cita) {
                 $eventos[] = [
                     'title' => $cita->paciente_nombre . ' ' . $cita->paciente_apellido,
-                    'start' => $cita->fecha_cita . 'T' . $cita->hora_inicio,
-                    'color' => 'Darkgreen',
+                    'start' => $cita->fecha_cita . 'T' . $cita->hora_inicio, // Inicio del evento (formato ISO)
                 ];
             }
         }
@@ -187,7 +186,6 @@ class CitasController extends CI_Controller
         $data = $this->sanitize_reagendar_cita();
         $id_cita = $data['id_cita'];
 
-        // Obtener datos actuales para validar conflicto
         $cita_actual = $this->Citas_model->get_cita_by_id($id_cita);
         if (!in_array($cita_actual->estado_cita, ['Programada', 'Confirmada'])) {
             return $this->json_response('error', 'No puedes reagendar una cita que ha sido cancelada o ya asistida.');
@@ -195,7 +193,6 @@ class CitasController extends CI_Controller
 
         $medico_actual = $this->Citas_model->get_medico_by_cita($id_cita);
 
-        // Validar si el nuevo horario está disponible
         $disponible = $this->Citas_model->validar_disponibilidad_reagendar(
             $medico_actual,
             $data['fecha_cita'],
