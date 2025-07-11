@@ -89,3 +89,4 @@ $route['citas/verify_available_citas'] = 'modulos/CitasController/verify_availab
 $route['citas/create_cita'] = 'modulos/CitasController/create_cita';
 $route['citas/cancel_cita/(:num)'] = 'modulos/CitasController/cancel_cita/$1';
 $route['citas/get_next_citas_json'] = 'modulos/CitasController/get_next_citas_json';
+$route['citas/reagendar_cita'] = 'modulos/CitasController/reagendar_cita';

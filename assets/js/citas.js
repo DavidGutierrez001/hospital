@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-	loadCalendar();
 
+	loadCalendar();
 	function loadCalendar() {
 		const calendarEl = document.querySelector("#calendar");
 		const calendar = new FullCalendar.Calendar(calendarEl, {
@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					if (data.status === "success") {
 						Swal.fire({
 							title: "Cita guardada",
-							text: "La cita se ha guardado correctamente.",
+							text: data.message,
 							icon: "success",
 							confirmButtonText: "Aceptar",
 						}).then(() => {
@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					console.error("Error al guardar la cita:", error);
 					Swal.fire({
 						title: "Error",
-						text: "No se pudo guardar la cita.",
+						text: data.message || "No se pudo guardar la cita.",
 						icon: "error",
 						confirmButtonText: "Aceptar",
 					});
@@ -213,5 +213,57 @@ document.addEventListener("DOMContentLoaded", function () {
 				}
 			});
 		});
+	});
+
+	const btnReagendar = document.getElementById("btnReagendar");
+
+	if (btnReagendar) {
+		btnReagendar.addEventListener("click", function () {
+			const reagendarCita = document.getElementById("reagendarCita");
+			const idCita = reagendarCita.querySelector('input[name="id_cita"]').value;
+			console.log("ID de cita a reagendar:", idCita);
+			if (idCita) {
+				fetch("/hospital/citas/reagendar_cita", {
+					method: "POST",
+					body: new FormData(reagendarCita),
+				})
+					.then((res) => res.json())
+					.then((data) => {
+						if (data.status === "success") {
+							Swal.fire({
+								title: "Cita reagendada",
+								text: data.message,
+								icon: "success",
+								confirmButtonText: "Aceptar",
+							}).then(() => {
+								location.reload();
+							});
+						} else {
+							Swal.fire({
+								title: "Error",
+								text: data.message,
+								icon: "error",
+								confirmButtonText: "Aceptar",
+							});
+						}
+					})
+					.catch((error) => {
+						console.error("Error al reagendar la cita:", error);
+						Swal.fire({
+							title: "Error",
+							text: data.message || "No se pudo reagendar la cita.",
+							icon: "error",
+							confirmButtonText: "Aceptar",
+						});
+					});
+			}
+		});
+	}
+
+	btnBackStep1.addEventListener("click", function () {
+		formStep1.classList.remove("inactive");
+		formStep2.classList.add("inactive");
+		formStep3.classList.add("inactive");
+		btnBackStep1.classList.add("d-none");
 	});
 });

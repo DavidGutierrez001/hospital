@@ -88,6 +88,10 @@ class CitasController extends CI_Controller
 
     public function create_cita()
     {
+        if ($this->Citas_model->not_pending_citas($this->input->post('doc_paciente', true))) {
+            return $this->json_response('error', 'El paciente ya tiene una cita pendiente.');
+        }
+
         $this->set_form_validation_rules();
 
         if ($this->form_validation->run() == FALSE) {
@@ -162,21 +166,67 @@ class CitasController extends CI_Controller
         $citas = $this->Citas_model->get_next_citas(); // ← tu método
 
         $eventos = [];
-        
+
 
         if (is_array($citas) && !empty($citas)) {
             foreach ($citas as $cita) {
-                $fecha = date('Y-m-d', strtotime($cita->fecha_cita));
-                $start = $fecha . 'T' . $cita->hora_inicio;
-
                 $eventos[] = [
-                    'title' => $cita->medico_nombre . ' ' . $cita->medico_apellido,
-                    'start' => $start,
-                    'color' => 'green',
+                    'title' => $cita->paciente_nombre . ' ' . $cita->paciente_apellido,
+                    'start' => $cita->fecha_cita . 'T' . $cita->hora_inicio,
+                    'color' => 'Darkgreen',
                 ];
             }
         }
 
         echo json_encode($eventos);
+    }
+
+
+    public function reagendar_cita()
+    {
+        $data = $this->sanitize_reagendar_cita();
+        $id_cita = $data['id_cita'];
+
+        // Obtener datos actuales para validar conflicto
+        $cita_actual = $this->Citas_model->get_cita_by_id($id_cita);
+        if (!in_array($cita_actual->estado_cita, ['Programada', 'Confirmada'])) {
+            return $this->json_response('error', 'No puedes reagendar una cita que ha sido cancelada o ya asistida.');
+        }
+
+        $medico_actual = $this->Citas_model->get_medico_by_cita($id_cita);
+
+        // Validar si el nuevo horario está disponible
+        $disponible = $this->Citas_model->validar_disponibilidad_reagendar(
+            $medico_actual,
+            $data['fecha_cita'],
+            $data['hora_inicio'],
+            $data['hora_fin'],
+            $id_cita
+        );
+
+        if (!$disponible) {
+            return $this->json_response('error', 'El médico ya tiene una cita en ese horario.');
+        }
+
+        // Actualizar la cita
+        $result = $this->Citas_model->reagendar_cita($data);
+
+        if (!$result['success']) {
+            return $this->json_response('error', $result['error']);
+        }
+
+        return $this->json_response('success', 'Cita médica reagendada correctamente.');
+    }
+
+
+
+    private function sanitize_reagendar_cita()
+    {
+        return [
+            'id_cita'       => $this->input->post('id_cita', true),
+            'fecha_cita'    => $this->input->post('fecha_cita', true),
+            'hora_inicio'   => $this->input->post('hora_inicio', true),
+            'hora_fin'      => date('H:i:s', strtotime($this->input->post('hora_inicio', true) . ' +30 minutes')),
+        ];
     }
 }

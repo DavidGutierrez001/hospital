@@ -36,6 +36,31 @@ class Citas_model extends CI_Model
         return $query->num_rows() === 0;
     }
 
+    public function not_pending_citas($doc_paciente)
+    {
+        $this->db->select('id_paciente');
+        $this->db->from('pacientes');
+        $this->db->where('documento', $doc_paciente);
+        $paciente = $this->db->get()->row();
+
+        if (!$paciente) {
+            return false;
+        }
+
+        $this->db->select('id_cita');
+        $this->db->from('citas_medicas');
+        $this->db->where('id_paciente', $paciente->id_paciente);
+        $this->db->where('estado_cita !=', 'Cancelada');
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
     public function insert_cita($data)
     {
         $this->db->trans_start();
@@ -81,7 +106,7 @@ class Citas_model extends CI_Model
 
     public function get_cita_by_id($id_cita)
     {
-        $this->db->select('id_cita')
+        $this->db->select('*')
             ->from('citas_medicas')
             ->where('id_cita', $id_cita);
         $query = $this->db->get();
@@ -90,8 +115,9 @@ class Citas_model extends CI_Model
             return false;
         }
 
-        return true;
+        return $query->row();
     }
+
 
     public function cancel_cita($id_cita)
     {
@@ -125,5 +151,58 @@ class Citas_model extends CI_Model
         $this->db->order_by('citas_medicas.fecha_cita', 'ASC');
         $this->db->limit($limit);
         return $this->db->get()->result();
+    }
+
+    public function reagendar_cita($data)
+    {
+        if (!isset($data['id_cita'])) {
+            return ['success' => false, 'error' => 'Falta el ID de la cita.'];
+        }
+
+        $id_cita = $data['id_cita'];
+        unset($data['id_cita']);
+
+        $this->db->where('id_cita', $id_cita);
+        $updated = $this->db->update('citas_medicas', $data);
+
+        if ($updated) {
+            return ['success' => true];
+        } else {
+            return ['success' => false, 'error' => 'No se pudo actualizar la cita.'];
+        }
+    }
+
+    public function validar_disponibilidad_reagendar($id_medico, $fecha, $hora_inicio, $hora_fin, $id_cita)
+    {
+        $this->db->from('citas_medicas');
+        $this->db->where('id_medico', $id_medico);
+        $this->db->where('fecha_cita', $fecha);
+        $this->db->where('hora_inicio <', $hora_fin);
+        $this->db->where('hora_fin >', $hora_inicio);
+        $this->db->where('id_cita !=', $id_cita);
+        $this->db->where_in('estado_cita', ['Programada', 'Confirmada']);
+        $this->db->where('fecha_cita >=', date('Y-m-d'));
+
+
+        $query = $this->db->get();
+        $conflictos = $query->num_rows();
+
+        if ($conflictos > 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function get_medico_by_cita($id_cita)
+    {
+        $this->db->select('id_medico,');
+        $this->db->from('citas_medicas');
+        $this->db->where('id_cita', $id_cita);
+
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->row()->id_medico;
+        }
     }
 }
