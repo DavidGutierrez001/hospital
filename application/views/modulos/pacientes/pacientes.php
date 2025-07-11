@@ -146,7 +146,6 @@
                             <button class="btnDelete btn btn-danger btn-sm" data-id="<?= $p->id_paciente ?>">
                                 <i class="bi bi-trash-fill fs-6"></i>
                             </button>
-
                         </td>
                     </tr>
                 <?php endforeach; ?>

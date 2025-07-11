@@ -128,14 +128,14 @@
                         <td scope="row">
                             <?php if ($medico->activo): ?>
                                 <div class="d-flex">
-                                    <div style="background-color: #1a2b20" class="d-flex gap-2 justify-content-center align-items-center p-1 rounded-1">
+                                    <div class="d-flex gap-2 justify-content-center align-items-center p-1 rounded-1">
                                         <span class="activo"></span>
                                         <span class="text-success">Activo</span>
                                     </div>
                                 </div>
                             <?php else: ?>
                                 <div class="d-flex">
-                                    <div style="background-color: #2b1c15;" class="d-flex gap-2 justify-content-center align-items-center p-1 rounded-1">
+                                    <div class="d-flex gap-2 justify-content-center align-items-center p-1 rounded-1">
                                         <span class="inactivo"></span>
                                         <span class="text-danger">Inactivo</span>
                                     </div>

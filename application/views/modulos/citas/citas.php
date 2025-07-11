@@ -90,7 +90,7 @@
                     <th>PACIENTE</th>
                     <th>MÉDICO</th>
                     <th>ESTADO</th>
-                    <th>ACCIONES</th>
+                    <th class="text-center">ACCIONES</th>
                 </thead>
                 <tbody>
                     <?php if (count($citas) > 0) : ?>
@@ -110,7 +110,7 @@
                                         <?= htmlspecialchars($cita->estado_cita) ?>
                                     </span>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <div>
                                         <?php if (htmlspecialchars($cita->estado_cita) == 'Programada') : ?>
                                             <button class="btnDelete btn btn-danger btn-sm" data-id="<?= htmlspecialchars($cita->id_cita) ?>">
