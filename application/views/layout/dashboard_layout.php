@@ -62,7 +62,22 @@
                         <a href="<?php echo base_url('dashboard/citas') ?>" class="nav-link <?= current_url() == base_url('dashboard/citas') ? 'selected-nav-link' : '' ?>">
                             <i class="bi bi-calendar2-plus-fill"></i> Citas Médicas
                         </a>
-
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url('dashboard/hitorial_medico') ?>" class="nav-link <?= current_url() == base_url('dashboard/historial_medico') ? 'selected-nav-link' : '' ?>">
+                        <i class="bi bi-heart-pulse-fill"></i> Historial Médico
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url('dashboard/farmacia') ?>" class="nav-link" <?= current_url() == base_url('dashboard/historial_medico') ? 'selected-nav-link' : '' ?>">
+                            <i class="bi bi-capsule"></i> Farmacia
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url('dashboard/reportes') ?>" class="nav-link <?= current_url() == base_url('dashboard/reportes') ? 'selected-nav-link' : '' ?>">
+                            <i class="bi bi-bar-chart-fill"></i>
+                            Reportes
+                        </a>
                     </li>
                 </ul>
                 <ul class="mt-auto">

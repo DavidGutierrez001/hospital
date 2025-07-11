@@ -205,7 +205,6 @@ class CitasController extends CI_Controller
             return $this->json_response('error', 'El médico ya tiene una cita en ese horario.');
         }
 
-        // Actualizar la cita
         $result = $this->Citas_model->reagendar_cita($data);
 
         if (!$result['success']) {
