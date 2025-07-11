@@ -65,7 +65,7 @@
                                 <div id="formStep3" class="inactive d-flex flex-column h-100 w-100 gap-3">
                                     <section id="contentPacientes" class="d-flex flex-column w-100">
                                         <label for="doc_paciente">Documento del paciente</label>
-                                        <input type="text" id="doc_paciente" name="doc_paciente" class="form-control">
+                                        <input type="text" id="doc_paciente" name="doc_paciente" class="form-control" autocomplete="off" required>
                                     </section>
                                     <button class="btn-green" type="submit">Agendar cita médica</button>
                                 </div>

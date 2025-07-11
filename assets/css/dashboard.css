@@ -417,7 +417,8 @@ table.dataTable span.dt-column-order {
 }
 
 .swal2-icon-contentm,
-.swal2-icon {
+.swal2-icon,
+.swal2-x-mark {
 	color: #5bb770 !important;
 	border-color: #5bb770 !important;
 }
