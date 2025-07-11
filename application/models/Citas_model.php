@@ -146,7 +146,7 @@ class Citas_model extends CI_Model
         $this->db->join('medicos', 'citas_medicas.id_medico = medicos.id_medico');
         $this->db->join('usuarios AS usuario_paciente', 'usuario_paciente.id_usuario = pacientes.id_usuario');
         $this->db->join('usuarios AS usuario_medico', 'usuario_medico.id_usuario = medicos.id_usuario');
-        $this->db->where('citas_medicas.fecha_cita >=', date('Y-m-d'));
+        $this->db->where('citas_medicas.fecha_cita >', date('Y-m-d'));
         $this->db->where('citas_medicas.estado_cita', 'Programada');
         $this->db->order_by('citas_medicas.fecha_cita', 'ASC');
         $this->db->limit($limit);

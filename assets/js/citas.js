@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
 	function loadCalendar() {
 		const calendarEl = document.querySelector("#calendar");
 		const calendar = new FullCalendar.Calendar(calendarEl, {
-			initialView: "listWeek",
+			initialView: "listMonth",
 			themeSystem: "bootstrap5",
 			headerToolbar: {
 				left: "prev,next",
-				center: "listWeek",
+				center: "listMonth",
 				right: "dayGridMonth,timeGridWeek,timeGridDay",
 			},
 			height: "100%",
