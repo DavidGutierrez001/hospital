@@ -163,7 +163,7 @@ class CitasController extends CI_Controller
     {
         header('Content-Type: application/json');
 
-        $citas = $this->Citas_model->get_next_citas(); // ← tu método
+        $citas = $this->Citas_model->get_next_citas();
 
         $eventos = [];
 
@@ -172,7 +172,7 @@ class CitasController extends CI_Controller
             foreach ($citas as $cita) {
                 $eventos[] = [
                     'title' => $cita->paciente_nombre . ' ' . $cita->paciente_apellido,
-                    'start' => $cita->fecha_cita . 'T' . $cita->hora_inicio, // Inicio del evento (formato ISO)
+                    'start' => $cita->fecha_cita . 'T' . $cita->hora_inicio,
                 ];
             }
         }

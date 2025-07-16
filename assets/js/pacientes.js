@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				console.error("Formulario no encontrado");
 				return;
 			}
-			fetch(`pacientes/update/${id}`, {
+			fetch(`/hospital/pacientes/update/${id}`, {
 				method: "POST",
 				body: new FormData(formulario),
 			})

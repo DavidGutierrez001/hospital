@@ -12,15 +12,13 @@ class Citas_model extends CI_Model
     {
         $this->db->select('citas_medicas.id_cita, citas_medicas.fecha_cita, citas_medicas.hora_inicio, citas_medicas.estado_cita, 
                     pacientes.id_paciente, 
+                    pacientes.documento,
                     usuario_paciente.primer_nombre, usuario_paciente.primer_apellido,
                     medicos.id_medico,
                     usuario_medico.primer_nombre AS medico_nombre, usuario_medico.primer_apellido AS medico_apellido');
-
         $this->db->from('citas_medicas');
-
         $this->db->join('pacientes', 'citas_medicas.id_paciente = pacientes.id_paciente');
         $this->db->join('medicos', 'citas_medicas.id_medico = medicos.id_medico');
-
         $this->db->join('usuarios AS usuario_paciente', 'usuario_paciente.id_usuario = pacientes.id_usuario');
         $this->db->join('usuarios AS usuario_medico', 'usuario_medico.id_usuario = medicos.id_usuario');
         $query = $this->db->get();
@@ -146,7 +144,7 @@ class Citas_model extends CI_Model
         $this->db->join('medicos', 'citas_medicas.id_medico = medicos.id_medico');
         $this->db->join('usuarios AS usuario_paciente', 'usuario_paciente.id_usuario = pacientes.id_usuario');
         $this->db->join('usuarios AS usuario_medico', 'usuario_medico.id_usuario = medicos.id_usuario');
-        $this->db->where('citas_medicas.fecha_cita >', date('Y-m-d'));
+        $this->db->where('citas_medicas.fecha_cita >=', date('Y-m-d'));
         $this->db->where('citas_medicas.estado_cita', 'Programada');
         $this->db->order_by('citas_medicas.fecha_cita', 'ASC');
         $this->db->limit($limit);

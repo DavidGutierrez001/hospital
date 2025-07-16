@@ -41,40 +41,40 @@
                 <ul class="nav-list d-flex flex-column gap-1">
                     <h1 class="nav-category">MENU</h1>
                     <li class="nav-item">
-                        <a href="<?php echo base_url('dashboard/home') ?>" class="nav-link <?= current_url() == base_url('dashboard/home') ? 'selected-nav-link' : '' ?>">
+                        <a href="<?php echo base_url('dashboard/home') ?>" class="nav-link-sidebar <?= current_url() == base_url('dashboard/home') ? 'selected-nav-link-sidebar' : '' ?>">
                             <i class="bi bi-grid-1x2-fill"></i>
                             Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo base_url('dashboard/pacientes') ?>" class="nav-link <?= current_url() == base_url('dashboard/pacientes') ? 'selected-nav-link' : '' ?>">
+                        <a href="<?php echo base_url('dashboard/pacientes') ?>" class="nav-link-sidebar <?= current_url() == base_url('dashboard/pacientes') ? 'selected-nav-link-sidebar' : '' ?>">
                             <i class="bi bi-person-fill"></i>
                             Pacientes
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo base_url('dashboard/medicos') ?>" class="nav-link <?= current_url() == base_url('dashboard/medicos') ? 'selected-nav-link' : '' ?>">
+                        <a href="<?php echo base_url('dashboard/medicos') ?>" class="nav-link-sidebar <?= current_url() == base_url('dashboard/medicos') ? 'selected-nav-link-sidebar' : '' ?>">
                             <i class="bi bi-people-fill"></i>
                             Medicos
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo base_url('dashboard/citas') ?>" class="nav-link <?= current_url() == base_url('dashboard/citas') ? 'selected-nav-link' : '' ?>">
+                        <a href="<?php echo base_url('dashboard/citas') ?>" class="nav-link-sidebar <?= current_url() == base_url('dashboard/citas') ? 'selected-nav-link-sidebar' : '' ?>">
                             <i class="bi bi-calendar2-plus-fill"></i> Citas Médicas
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo base_url('dashboard/hitorial_medico') ?>" class="nav-link <?= current_url() == base_url('dashboard/historial_medico') ? 'selected-nav-link' : '' ?>">
-                        <i class="bi bi-heart-pulse-fill"></i> Historial Médico
+                        <a href="<?php echo base_url('dashboard/historial') ?>" class="nav-link-sidebar <?= current_url() == base_url('dashboard/historial') ? 'selected-nav-link-sidebar' : '' ?>">
+                            <i class="bi bi-heart-pulse-fill"></i> Historial Médico
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo base_url('dashboard/farmacia') ?>" class="nav-link" <?= current_url() == base_url('dashboard/historial_medico') ? 'selected-nav-link' : '' ?>">
+                        <a href="<?php echo base_url('dashboard/farmacia') ?>" class="nav-link-sidebar" <?= current_url() == base_url('dashboard/farmacia') ? 'selected-nav-link-sidebar' : '' ?>">
                             <i class="bi bi-capsule"></i> Farmacia
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo base_url('dashboard/reportes') ?>" class="nav-link <?= current_url() == base_url('dashboard/reportes') ? 'selected-nav-link' : '' ?>">
+                        <a href="<?php echo base_url('dashboard/reportes') ?>" class="nav-link-sidebar <?= current_url() == base_url('dashboard/reportes') ? 'selected-nav-link-sidebar' : '' ?>">
                             <i class="bi bi-bar-chart-fill"></i>
                             Reportes
                         </a>
@@ -180,13 +180,11 @@
         <?php endforeach; ?>
     <?php endif; ?>
 
-
     <?php if (isset($js)) : ?>
         <?php foreach ($js as $script) : ?>
             <script src="<?php echo base_url($script); ?>"></script>
         <?php endforeach; ?>
     <?php endif; ?>
-
 
 
     <?php if ($this->session->flashdata('success')): ?>

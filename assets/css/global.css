@@ -151,7 +151,7 @@ button {
 .loader-button {
 	width: 25px;
 	height: 25px;
-	border: 2.5px solid #fff;
+	border: 2.5px solid var(--texto);
 	border-bottom-color: transparent;
 	border-radius: 50%;
 	display: inline-block;

@@ -87,6 +87,7 @@
                     <th class="text-center">#</th>
                     <th>FECHA CITA</th>
                     <th>HORA INICIO</th>
+                    <th class="text-start">DOCUMENTO</th>
                     <th>PACIENTE</th>
                     <th>MÉDICO</th>
                     <th>ESTADO</th>
@@ -99,6 +100,7 @@
                                 <td class="text-center"><?= htmlspecialchars($cita->id_cita) ?></td>
                                 <td><?= date('d/m/Y', strtotime($cita->fecha_cita)) ?></td>
                                 <td><?= date('h:i A', strtotime($cita->hora_inicio)) ?></td>
+                                <td class="text-start"><?= htmlspecialchars($cita->documento) ?></td>
                                 <td><?= htmlspecialchars($cita->primer_nombre) . ' ' . htmlspecialchars($cita->primer_apellido) ?></td>
                                 <td><?= htmlspecialchars($cita->medico_nombre) . ' ' . htmlspecialchars($cita->medico_apellido) ?></td>
                                 <td>

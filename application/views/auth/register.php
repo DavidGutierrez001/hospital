@@ -12,7 +12,7 @@
                     <div>
                         <label for="email" class="form-label">Correo Electrónico<span class="text-danger">*</span></label>
                         <div class="position-relative">
-                            <input type="email" class="form-control ps-5" id="email" name="email" placeholder="Ingresa un correo" required autocomplete="off">
+                            <input type="email" class="form-control ps-5 bg-white border-0" id="email" name="email" placeholder="Ingresa un correo" required autocomplete="off">
                             <i class="bi bi-envelope-at-fill text-purple position-absolute top-50 translate-middle"></i>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                         <div class="position-relative">
                             <i class="bi bi-shield-lock-fill text-purple position-absolute top-50 translate-middle"></i>
                             <i id="showPassword" class="bi bi-eye-slash-fill text-purple position-absolute top-50 translate-middle"></i>
-                            <input type="password" class="form-control ps-5" id="password" name="password" placeholder="Ingresa una contraseña" required>
+                            <input type="password" class="form-control ps-5 bg-white border-0" id="password" name="password" placeholder="Ingresa una contraseña" required>
                         </div>
                     </div>
                     <div>

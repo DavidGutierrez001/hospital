@@ -77,6 +77,28 @@ document.addEventListener("DOMContentLoaded", function () {
 	} else {
 		console.warn("#sidebarBtn o #sidebarContent no encontrados");
 	}
-	
-	
+
+	const originalIcon = `<i class="bi bi-copy fs-6"></i>`;
+
+	document.querySelectorAll(".copyButton").forEach((btn) => {
+		btn.addEventListener("click", function () {
+			const textToCopy = btn.closest(".copy-container")?.querySelector(".copyText")?.textContent;
+
+			if (!textToCopy) return;
+
+			// volvemos todos los botones a su icono original
+			document.querySelectorAll(".copyButton").forEach((b) => {
+				b.innerHTML = originalIcon;
+			});
+
+			navigator.clipboard
+				.writeText(textToCopy)
+				.then(() => {
+					btn.innerHTML = `<i class="bi bi-check-circle-fill fs-6 text-success"></i>`;
+				})
+				.catch(() => {
+					btn.innerHTML = `<i class="bi bi-x-circle text-danger fs-6"></i>`;
+				});
+		});
+	});
 });
