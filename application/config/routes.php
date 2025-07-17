@@ -93,3 +93,5 @@ $route['citas/get_next_citas_json'] = 'modulos/CitasController/get_next_citas_js
 $route['citas/reagendar_cita'] = 'modulos/CitasController/reagendar_cita';
 
 $route['historial/get_historial_by_id/(:num)'] = 'modulos/HistorialController/get_historial_by_id/$1';
+$route['historial/create_historial'] = 'modulos/HistorialController/create_historial';
+$route['historial/delete_historial/(:num)'] = 'modulos/HistorialController/delete_historial/$1';
