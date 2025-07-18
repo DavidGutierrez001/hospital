@@ -10,7 +10,7 @@ class Medicos_model extends CI_Model
 
     public function get_all()
     {
-        $this->db->select('medicos.id_medico, medicos.id_especialidad, medicos.contacto, medicos.activo, 
+        $this->db->select('medicos.id_medico, medicos.id_especialidad, medicos.contacto, medicos.activo, medicos.documento, 
                             especialidades.nombre_especialidad, 
                             usuarios.primer_nombre, usuarios.segundo_nombre, usuarios.primer_apellido, usuarios.segundo_apellido, usuarios.email');
         $this->db->from('medicos');

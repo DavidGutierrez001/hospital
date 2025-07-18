@@ -5,10 +5,11 @@ document.addEventListener("DOMContentLoaded", function () {
 		btnLogin.addEventListener("click", function (e) {
 			e.preventDefault();
 			const btnText = document.querySelector("#btnText");
+			const loadingSpinner = document.querySelector("#loadingSpinner");
 
 			if (btnText) {
 				btnText.innerHTML = "";
-				btnText.classList.add("loader-button");
+				loadingSpinner.classList.remove("d-none");
 			}
 
 			try {

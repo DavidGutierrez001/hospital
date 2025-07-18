@@ -28,6 +28,7 @@
                     <div>
                         <button id="btnLogin" type="submit" class="d-flex lh-3 justify-content-center align-items-center bg-purple w-100 text-white my-3 position-relative">
                             <span class="" id="btnText">Iniciar sesión</span>
+                            <span id="loadingSpinner" class="spinner-grow spinner-grow-sm text-light d-none" role="status"></span>
                         </button>
                     </div>
                     <div class="d-flex justify-content-center mt-auto">

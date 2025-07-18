@@ -101,6 +101,7 @@
                 <tr>
                     <th class="text-center" scope="col">#</th>
                     <th class="w-25" scope="col">MEDICO</th>
+                    <th class="col text-start">DOCUMENTO</th>
                     <th scope="col">ESPECIALIDAD</th>
                     <th class="text-start" scope="col">CONTACTO</th>
                     <th scope="col">ESTADO</th>
@@ -118,6 +119,14 @@
                             <span class="text-secondary">
                                 <?php echo htmlspecialchars($medico->email); ?>
                             </span>
+                        </td>
+                        <td class="text-start" scope="row">
+                            <div class="copy-container">
+                                <span class="copyText"><?= htmlspecialchars($medico->documento) ?></span>
+                                <button class="bg-transparent copyButton">
+                                    <i style="color: var(--texto);" class="bi bi-copy fs-6"></i>
+                                </button>
+                            </div>
                         </td>
                         <td scope="row">
                             <?php echo htmlspecialchars($medico->nombre_especialidad); ?>

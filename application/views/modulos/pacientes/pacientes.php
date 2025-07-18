@@ -137,7 +137,14 @@
                         <td class="text-start"><?php echo htmlspecialchars($p->id_paciente) ?></td>
                         <td><?php echo htmlspecialchars($p->primer_nombre . ' ' . $p->segundo_nombre) ?></td>
                         <td><?php echo htmlspecialchars($p->primer_apellido . ' ' . $p->segundo_apellido) ?></td>
-                        <td class="text-start"><?php echo htmlspecialchars($p->documento) ?></td>
+                        <td class="text-start">
+                            <div class="copy-container">
+                                <span class="copyText"><?= htmlspecialchars($p->documento) ?></span>
+                                <button class="bg-transparent copyButton">
+                                    <i style="color: var(--texto);" class="bi bi-copy fs-6"></i>
+                                </button>
+                            </div>
+                        </td>
                         <td>
                             <button data-id="<?= htmlspecialchars($p->id_paciente) ?>"
                                 class="btnEdit btn btn-success btn-sm text-white">

@@ -95,8 +95,8 @@ class HistorialController extends CI_Controller
 
     private function valid_form_create()
     {
-        $this->form_validation->set_rules('documento_paciente', 'Documento', 'required|trim');
-        $this->form_validation->set_rules('documento_medico', 'Medico', 'required|trim');
+        $this->form_validation->set_rules('documento_paciente', 'Documento del paciente', 'required|trim');
+        $this->form_validation->set_rules('documento_medico', 'Documento del médico', 'required|trim');
         $this->form_validation->set_rules('motivo_consulta', 'Motivo de Consulta', 'required|trim');
         $this->form_validation->set_rules('diagnostico', 'Diagnóstico', 'required|trim');
         $this->form_validation->set_rules('tratamiento', 'Tratamiento', 'required|trim');
