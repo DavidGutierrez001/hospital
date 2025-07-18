@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-07-2025 a las 18:13:42
+-- Tiempo de generación: 18-07-2025 a las 15:07:43
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -44,24 +44,11 @@ CREATE TABLE `citas_medicas` (
 INSERT INTO `citas_medicas` (`id_cita`, `id_paciente`, `id_medico`, `fecha_cita`, `hora_inicio`, `hora_fin`, `estado_cita`) VALUES
 (8, 6, 11, '2025-07-10', '14:00:00', '14:30:00', 'Cancelada'),
 (9, 3, 11, '2025-07-09', '08:00:00', '08:30:00', 'Asistida'),
-(11, 7, 15, '2025-07-17', '07:30:00', '08:00:00', 'Programada');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `consultas_medicas`
---
-
-CREATE TABLE `consultas_medicas` (
-  `id_consulta` int(11) NOT NULL,
-  `id_paciente` int(11) DEFAULT NULL,
-  `id_medico` int(11) DEFAULT NULL,
-  `fecha_consulta` date DEFAULT NULL,
-  `motivo_consulta` varchar(255) DEFAULT NULL,
-  `diagnostico` varchar(255) DEFAULT NULL,
-  `tratamiento` varchar(255) DEFAULT NULL,
-  `notas` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(11, 7, 15, '2025-07-17', '07:30:00', '08:00:00', 'Programada'),
+(12, 9, 19, '2025-07-17', '14:00:00', '14:30:00', 'Cancelada'),
+(14, 10, 19, '2025-07-12', '08:30:00', '09:00:00', 'Programada'),
+(15, 4, 19, '2025-07-11', '09:15:00', '09:45:00', 'Programada'),
+(16, 9, 20, '2025-07-16', '10:00:00', '10:30:00', 'Cancelada');
 
 -- --------------------------------------------------------
 
@@ -145,7 +132,7 @@ CREATE TABLE `especialidades` (
 INSERT INTO `especialidades` (`id_especialidad`, `nombre_especialidad`) VALUES
 (1, 'General'),
 (2, 'Pediatra'),
-(3, 'Oculista'),
+(3, 'Optometrista'),
 (4, 'Dentista'),
 (5, 'Cardiologo'),
 (6, 'Dermatologo');
@@ -178,15 +165,30 @@ INSERT INTO `farmaceuticos` (`id_farmaceutico`, `id_usuario`) VALUES
 
 CREATE TABLE `historial_medico` (
   `id_historial` int(11) NOT NULL,
-  `id_medico` int(11) DEFAULT NULL,
   `id_paciente` int(11) DEFAULT NULL,
+  `id_medico` int(11) DEFAULT NULL,
   `fecha_creacion` datetime DEFAULT NULL,
-  `ultima_actualizacion` datetime DEFAULT NULL,
-  `antecedentes_personales` varchar(255) DEFAULT NULL,
-  `antecedentes_familiares` varchar(255) DEFAULT NULL,
-  `estilo_vida` varchar(255) DEFAULT NULL,
-  `notas_generales` varchar(255) DEFAULT NULL
+  `motivo_consulta` text DEFAULT NULL,
+  `diagnostico` text DEFAULT NULL,
+  `tratamiento` text DEFAULT NULL,
+  `examen_fisico` text DEFAULT NULL,
+  `resultados_pruebas` text DEFAULT NULL,
+  `antecedentes_personales` text DEFAULT NULL,
+  `antecedentes_familiares` text DEFAULT NULL,
+  `estilo_vida` text DEFAULT NULL,
+  `notas_generales` text DEFAULT NULL,
+  `proxima_cita` date DEFAULT NULL,
+  `eliminado` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `historial_medico`
+--
+
+INSERT INTO `historial_medico` (`id_historial`, `id_paciente`, `id_medico`, `fecha_creacion`, `motivo_consulta`, `diagnostico`, `tratamiento`, `examen_fisico`, `resultados_pruebas`, `antecedentes_personales`, `antecedentes_familiares`, `estilo_vida`, `notas_generales`, `proxima_cita`, `eliminado`) VALUES
+(1, 8, 11, '2025-07-14 09:07:06', 'Dolor de cabeza', 'Cefalea tensional. Se descarta migraña por falta de síntomas asociados.', 'Paracetamol 500 mg cada 8 horas por 3 días. Hidratación y descanso recomendados.', 'Tensión arterial 120/80, temperatura 36.7°C, sin signos neurológicos.', 'No se solicitaron exámenes en esta consulta inicial.', 'Alergia al ibuprofeno. No enfermedades crónicas.', 'Madre con antecedentes de migraña. Padre sano.', 'Estudiante universitario. Duerme menos de 6 horas por día. Consume café frecuentemente.', 'Se recomienda mejorar hábitos de sueño y reducir consumo de cafeína. Seguimiento en caso de recurrencia.', '2025-07-21', 0),
+(2, 9, 12, '2025-07-16 10:45:00', 'Dolor abdominal persistente', 'Posible gastritis. Se descarta apendicitis tras examen físico.', 'Omeprazol 20 mg una vez al día durante 14 días. Dieta blanda recomendada.', 'Abdomen blando, dolor a la palpación en epigastrio. Temperatura 37.2°C.', 'Se solicitó ecografía abdominal. Resultados pendientes.', 'Historial de acidez estomacal. Sin enfermedades crónicas conocidas.', 'Padre con antecedentes de úlceras gástricas.', 'Come fuera de casa frecuentemente. Consumo moderado de café.', 'Se recomienda control en 7 días con resultados. Evitar automedicación.', NULL, 0),
+(4, 8, 11, '2025-07-16 19:22:28', 'Fractura de pierna derecha', 'Fractura de tibia derecha, tercio medio, con leve desplazamiento.', 'Reducción cerrada e inmovilización con yeso. Analgesia con AINEs. Controles radiográficos y fisioterapia posterior.', 'Deformidad, dolor, e hinchazón en pierna derecha. Pulsos distales presentes, sensibilidad conservada.', 'Radiografía confirma fractura espiroidea de tibia derecha.', 'Sin alergias ni enfermedades crónicas.\r\nNo fumador.', 'Padre hipertenso. \r\nMadre diabética.', 'Oficinista, sedentario.', 'Fractura por caída de patineta. Se le indicó no apoyar el pie.', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -216,6 +218,8 @@ CREATE TABLE `medicos` (
   `id_medico` int(11) NOT NULL,
   `id_usuario` int(11) DEFAULT NULL,
   `id_especialidad` int(11) DEFAULT NULL,
+  `tipo_documento` varchar(10) DEFAULT 'CC',
+  `documento` varchar(15) DEFAULT NULL,
   `contacto` int(11) DEFAULT NULL,
   `activo` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -224,16 +228,16 @@ CREATE TABLE `medicos` (
 -- Volcado de datos para la tabla `medicos`
 --
 
-INSERT INTO `medicos` (`id_medico`, `id_usuario`, `id_especialidad`, `contacto`, `activo`) VALUES
-(11, 14, 6, 5698887, 1),
-(12, 25, 4, 4554477, 1),
-(15, 51, 1, 8185877, 1),
-(16, 56, 4, 3921877, 1),
-(17, 59, 3, 585669, 1),
-(19, 61, 2, 2589954, 1),
-(20, 62, 4, 89978413, 1),
-(31, 78, 5, 6584713, 1),
-(32, 79, 4, 54254878, 1);
+INSERT INTO `medicos` (`id_medico`, `id_usuario`, `id_especialidad`, `tipo_documento`, `documento`, `contacto`, `activo`) VALUES
+(11, 14, 6, 'CC', '72033862', 5698887, 1),
+(12, 25, 4, 'CE', '84107734', 4554477, 1),
+(15, 51, 1, 'CC', '49742211', 8185877, 1),
+(16, 56, 1, 'CC', '98132434', 39218779, 1),
+(17, 59, 3, 'CC', '66836384', 585669, 1),
+(19, 61, 2, 'CC', '26699407', 2589954, 1),
+(20, 62, 4, 'CE', '85761305', 89978413, 1),
+(31, 78, 5, 'CC', '39170164', 6584713, 1),
+(32, 79, 4, 'CC', '62381407', 54254878, 1);
 
 -- --------------------------------------------------------
 
@@ -298,13 +302,12 @@ CREATE TABLE `pacientes` (
 
 INSERT INTO `pacientes` (`id_paciente`, `id_usuario`, `fecha_nacimiento`, `documento`, `tipo_documento`, `genero`, `direccion`, `estado_civil`, `telefono`) VALUES
 (1, 1, '2002-09-02', 123456789, 'Cedula de Ciudadania', 'Masculino', 'Calle 26', 'Soltero', 2147483647),
-(2, 3, NULL, 987654321, 'Cedula de Ciudadania', NULL, NULL, NULL, NULL),
-(3, 24, '2002-09-02', 214748364, 'Cedula de Ciudadania', 'Masculino', 'Calle 22', 'Soltero', 654624676),
+(3, 24, '2002-09-02', 214748364, 'Cedula de Ciudadania', 'Femenino', 'Calle 22', 'Soltero', 654624676),
 (4, 26, '2007-05-19', 124578987, 'Cedula de Ciudadania', 'Masculino', 'Calle x', 'Soltero', 2147483647),
 (5, 27, '1993-12-12', 214799965, 'Cedula de Ciudadania', 'Masculino', 'Avenida A # 5-6', 'Soltero', 3269987),
 (6, 31, '1999-09-05', 215748364, 'Cedula de Ciudadania', 'Masculino', 'Calle Alfonso', 'Soltero', 2147483647),
 (7, 32, '2002-09-02', 247483647, 'Cedula de Ciudadania', 'Masculino', 'Calle', 'Soltero', 252155454),
-(8, 33, '2005-07-05', 200507058, 'Cedula de Ciudadania', 'Masculino', 'Calle 52', 'Soltero', 52525252),
+(8, 33, '2005-07-05', 200507058, 'Cedula de Ciudadania', 'Femenino', 'Calle 52', 'Soltero', 52525252),
 (9, 34, '2002-09-02', 102092002, 'Cedula de Ciudadania', 'Femenino', 'Calle 29', 'Casado', 32154789),
 (10, 47, '2002-06-20', 245469752, 'Cedula de Ciudadania', 'Masculino', 'Calle 24c', 'Soltero', 6896323);
 
@@ -432,7 +435,7 @@ INSERT INTO `usuarios` (`id_usuario`, `id_rol`, `primer_nombre`, `segundo_nombre
 (27, 1, 'Camilo', 'Andres', 'Sanchez', 'Fonseca', 'CamiloSanchez@gmail.com', '$2y$10$9/sBITzz7cxTBdIFCp1nM.pt70UiJKUBOuqw2AeNQGotg0zrcdzzG', '2025-06-25 09:25:47', 1),
 (31, 1, 'Luis', 'Alfonso', 'Perez', 'Rodriguez', 'LuisAlfonso@gmail.com', '$2y$10$MO7DgovDaFfbwpPhSzCSyuMUI7PYmlL/eyqMy63orL5KLtXj/HJ7m', '2025-06-26 08:02:58', 1),
 (32, 1, 'Pepito', 'Andres', 'Perez', 'Sanchez', 'PepitoPerez@gmail.com', '$2y$10$uDNgVQy42gv1N3WaXj5bdex1NCtBUS0JaNQlOAfv5o7Y0dBpAyL36', '2025-06-26 08:15:06', 1),
-(33, 1, 'Maria', 'Jose', 'Sachez', 'Rodriguez', 'MariaJose@gmail.com', '$2y$10$oCqKjQQPJPEkkLbuS2oDCujioCNXVSblhAfr5GP313FCvpvxmDd8S', '2025-06-26 08:28:01', 1),
+(33, 1, 'Maria', 'Jose', 'Sanchez', 'Garzon', 'MariaJose@gmail.com', '$2y$10$oCqKjQQPJPEkkLbuS2oDCujioCNXVSblhAfr5GP313FCvpvxmDd8S', '2025-06-26 08:28:01', 1),
 (34, 1, 'Sofia', '', 'Alvarez', 'Mora', 'SofiaAlvarez@gmail.com', '$2y$10$lm6z5OzCR2GVmuA5uw8zcOCXyN8tH8gmVtx.7u3vpLAYwN5ryPe8S', '2025-06-26 08:30:54', 1),
 (47, 1, 'Mario', '', 'Mendez', '', 'MarioMendez@gmail.com', '$2y$10$gje1T2zV6qUyqF8XfaB3BeqWbjwCxzmnrthC04Uv9ogSG65x17MAe', '2025-06-26 10:02:51', 1),
 (51, 2, 'Felipe', 'Andres', 'Sanchez', 'Gonzalez', 'FelipeSanchez@gmail.com', '$2y$10$r.q0KPU4ToZDqsF46fECI.s4H5KA.l/0myl/3BlHq/Y22LGFCRcZG', '2025-07-02 07:38:16', 1),
@@ -469,14 +472,6 @@ ALTER TABLE `citas_medicas`
   ADD PRIMARY KEY (`id_cita`),
   ADD KEY `id_medico` (`id_medico`),
   ADD KEY `citas_medicas_ibfk_1` (`id_paciente`);
-
---
--- Indices de la tabla `consultas_medicas`
---
-ALTER TABLE `consultas_medicas`
-  ADD PRIMARY KEY (`id_consulta`),
-  ADD KEY `id_medico` (`id_medico`),
-  ADD KEY `consultas_medicas_ibfk_1` (`id_paciente`);
 
 --
 -- Indices de la tabla `detalle_recetas`
@@ -519,8 +514,8 @@ ALTER TABLE `farmaceuticos`
 --
 ALTER TABLE `historial_medico`
   ADD PRIMARY KEY (`id_historial`),
-  ADD KEY `id_medico` (`id_medico`),
-  ADD KEY `historial_medico_ibfk_2` (`id_paciente`);
+  ADD KEY `fk_paciente` (`id_paciente`),
+  ADD KEY `fk_medico` (`id_medico`);
 
 --
 -- Indices de la tabla `medicamentos`
@@ -609,13 +604,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `citas_medicas`
 --
 ALTER TABLE `citas_medicas`
-  MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT de la tabla `consultas_medicas`
---
-ALTER TABLE `consultas_medicas`
-  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_recetas`
@@ -634,6 +623,12 @@ ALTER TABLE `disponibilidad_medicos`
 --
 ALTER TABLE `farmaceuticos`
   MODIFY `id_farmaceutico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `historial_medico`
+--
+ALTER TABLE `historial_medico`
+  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `medicos`
@@ -689,13 +684,6 @@ ALTER TABLE `citas_medicas`
   ADD CONSTRAINT `citas_medicas_ibfk_2` FOREIGN KEY (`id_medico`) REFERENCES `medicos` (`id_medico`);
 
 --
--- Filtros para la tabla `consultas_medicas`
---
-ALTER TABLE `consultas_medicas`
-  ADD CONSTRAINT `consultas_medicas_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `pacientes` (`id_paciente`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `consultas_medicas_ibfk_2` FOREIGN KEY (`id_medico`) REFERENCES `medicos` (`id_medico`);
-
---
 -- Filtros para la tabla `detalle_recetas`
 --
 ALTER TABLE `detalle_recetas`
@@ -725,8 +713,8 @@ ALTER TABLE `farmaceuticos`
 -- Filtros para la tabla `historial_medico`
 --
 ALTER TABLE `historial_medico`
-  ADD CONSTRAINT `historial_medico_ibfk_1` FOREIGN KEY (`id_medico`) REFERENCES `medicos` (`id_medico`),
-  ADD CONSTRAINT `historial_medico_ibfk_2` FOREIGN KEY (`id_paciente`) REFERENCES `pacientes` (`id_paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_medico` FOREIGN KEY (`id_medico`) REFERENCES `medicos` (`id_medico`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_paciente` FOREIGN KEY (`id_paciente`) REFERENCES `pacientes` (`id_paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `medicos`
