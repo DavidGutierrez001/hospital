@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-07-2025 a las 15:07:43
+-- Tiempo de generación: 20-07-2025 a las 19:27:39
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -47,7 +47,7 @@ INSERT INTO `citas_medicas` (`id_cita`, `id_paciente`, `id_medico`, `fecha_cita`
 (11, 7, 15, '2025-07-17', '07:30:00', '08:00:00', 'Programada'),
 (12, 9, 19, '2025-07-17', '14:00:00', '14:30:00', 'Cancelada'),
 (14, 10, 19, '2025-07-12', '08:30:00', '09:00:00', 'Programada'),
-(15, 4, 19, '2025-07-11', '09:15:00', '09:45:00', 'Programada'),
+(15, 4, 19, '2025-07-18', '09:20:00', '09:50:00', 'Programada'),
 (16, 9, 20, '2025-07-16', '10:00:00', '10:30:00', 'Cancelada');
 
 -- --------------------------------------------------------
@@ -188,7 +188,8 @@ CREATE TABLE `historial_medico` (
 INSERT INTO `historial_medico` (`id_historial`, `id_paciente`, `id_medico`, `fecha_creacion`, `motivo_consulta`, `diagnostico`, `tratamiento`, `examen_fisico`, `resultados_pruebas`, `antecedentes_personales`, `antecedentes_familiares`, `estilo_vida`, `notas_generales`, `proxima_cita`, `eliminado`) VALUES
 (1, 8, 11, '2025-07-14 09:07:06', 'Dolor de cabeza', 'Cefalea tensional. Se descarta migraña por falta de síntomas asociados.', 'Paracetamol 500 mg cada 8 horas por 3 días. Hidratación y descanso recomendados.', 'Tensión arterial 120/80, temperatura 36.7°C, sin signos neurológicos.', 'No se solicitaron exámenes en esta consulta inicial.', 'Alergia al ibuprofeno. No enfermedades crónicas.', 'Madre con antecedentes de migraña. Padre sano.', 'Estudiante universitario. Duerme menos de 6 horas por día. Consume café frecuentemente.', 'Se recomienda mejorar hábitos de sueño y reducir consumo de cafeína. Seguimiento en caso de recurrencia.', '2025-07-21', 0),
 (2, 9, 12, '2025-07-16 10:45:00', 'Dolor abdominal persistente', 'Posible gastritis. Se descarta apendicitis tras examen físico.', 'Omeprazol 20 mg una vez al día durante 14 días. Dieta blanda recomendada.', 'Abdomen blando, dolor a la palpación en epigastrio. Temperatura 37.2°C.', 'Se solicitó ecografía abdominal. Resultados pendientes.', 'Historial de acidez estomacal. Sin enfermedades crónicas conocidas.', 'Padre con antecedentes de úlceras gástricas.', 'Come fuera de casa frecuentemente. Consumo moderado de café.', 'Se recomienda control en 7 días con resultados. Evitar automedicación.', NULL, 0),
-(4, 8, 11, '2025-07-16 19:22:28', 'Fractura de pierna derecha', 'Fractura de tibia derecha, tercio medio, con leve desplazamiento.', 'Reducción cerrada e inmovilización con yeso. Analgesia con AINEs. Controles radiográficos y fisioterapia posterior.', 'Deformidad, dolor, e hinchazón en pierna derecha. Pulsos distales presentes, sensibilidad conservada.', 'Radiografía confirma fractura espiroidea de tibia derecha.', 'Sin alergias ni enfermedades crónicas.\r\nNo fumador.', 'Padre hipertenso. \r\nMadre diabética.', 'Oficinista, sedentario.', 'Fractura por caída de patineta. Se le indicó no apoyar el pie.', NULL, 0);
+(4, 8, 11, '2025-07-16 19:22:28', 'Fractura de pierna derecha', 'Fractura de tibia derecha, tercio medio, con leve desplazamiento.', 'Reducción cerrada e inmovilización con yeso. Analgesia con AINEs. Controles radiográficos y fisioterapia posterior.', 'Deformidad, dolor, e hinchazón en pierna derecha. Pulsos distales presentes, sensibilidad conservada.', 'Radiografía confirma fractura espiroidea de tibia derecha.', 'Sin alergias ni enfermedades crónicas.\r\nNo fumador.', 'Padre hipertenso. \r\nMadre diabética.', 'Oficinista, sedentario.', 'Fractura por caída de patineta. Se le indicó no apoyar el pie.', NULL, 0),
+(5, 8, 16, '2025-07-18 09:03:00', 'Dolor abdominal persistente.', 'Gastritis crónica.', 'Omeprazol 20 mg cada 12 horas por 4 semanas.', ' Abdomen blando, dolor en epigastrio a la palpación, sin masa palpable.\r\n', 'Endoscopia revela inflamación gástrica leve.', 'Alergia a la amoxicilina.', 'Madre con antecedentes de úlcera gástrica.\r\n', 'Consume café y comidas irritantes con frecuencia, no fuma ni bebe alcohol.', 'Se recomienda modificar la dieta, evitar alimentos irritantes y realizar seguimiento en 1 mes.', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -199,14 +200,19 @@ INSERT INTO `historial_medico` (`id_historial`, `id_paciente`, `id_medico`, `fec
 CREATE TABLE `medicamentos` (
   `id_medicamento` int(11) NOT NULL,
   `nombre_comercial` varchar(255) DEFAULT NULL,
-  `presentación_estandar` varchar(255) DEFAULT NULL,
-  `unidad_medida` enum('kg','gr','ml') DEFAULT NULL,
   `descripcion` varchar(255) DEFAULT NULL,
   `receta_especial` tinyint(1) DEFAULT NULL,
   `activo` tinyint(1) DEFAULT NULL,
   `fecha_registro` date DEFAULT NULL,
   `existencias` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `medicamentos`
+--
+
+INSERT INTO `medicamentos` (`id_medicamento`, `nombre_comercial`, `descripcion`, `receta_especial`, `activo`, `fecha_registro`, `existencias`) VALUES
+(1, 'Dolex', 'Analgéstico y antipirético', 0, 1, '2025-07-19', 20);
 
 -- --------------------------------------------------------
 
@@ -628,7 +634,13 @@ ALTER TABLE `farmaceuticos`
 -- AUTO_INCREMENT de la tabla `historial_medico`
 --
 ALTER TABLE `historial_medico`
-  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `medicamentos`
+--
+ALTER TABLE `medicamentos`
+  MODIFY `id_medicamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `medicos`
@@ -687,14 +699,12 @@ ALTER TABLE `citas_medicas`
 -- Filtros para la tabla `detalle_recetas`
 --
 ALTER TABLE `detalle_recetas`
-  ADD CONSTRAINT `detalle_recetas_ibfk_1` FOREIGN KEY (`id_receta`) REFERENCES `recetas_medicas` (`id_receta`),
-  ADD CONSTRAINT `detalle_recetas_ibfk_2` FOREIGN KEY (`id_medicamento`) REFERENCES `medicamentos` (`id_medicamento`);
+  ADD CONSTRAINT `detalle_recetas_ibfk_1` FOREIGN KEY (`id_receta`) REFERENCES `recetas_medicas` (`id_receta`);
 
 --
 -- Filtros para la tabla `detalle_ventas`
 --
 ALTER TABLE `detalle_ventas`
-  ADD CONSTRAINT `detalle_ventas_ibfk_1` FOREIGN KEY (`id_medicamento`) REFERENCES `medicamentos` (`id_medicamento`),
   ADD CONSTRAINT `detalle_ventas_ibfk_2` FOREIGN KEY (`id_venta`) REFERENCES `ventas` (`id_venta`);
 
 --
@@ -764,8 +774,7 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `pacientes` (`id_paciente`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ventas_ibfk_2` FOREIGN KEY (`id_medicamento`) REFERENCES `medicamentos` (`id_medicamento`);
+  ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `pacientes` (`id_paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

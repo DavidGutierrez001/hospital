@@ -1,13 +1,15 @@
 <div>
-    <div class="target d-flex justify-content-between p-3 text-white rounded-3 gap-2">
+    <div class="target d-flex justify-content-between w-100 p-3 align-items-center rounded-3 mb-4">
         <div style="background-color:rgba(0, 0, 0, 0.09);" class="d-flex flex-column justify-content-between align-items-center text-white gap-2 p-3 rounded-3">
             <h6 class="text-white fw-light">Total Pacientes</h6>
             <count-up class="fw-semibold fs-1"><?php echo htmlspecialchars(count($pacientes)) ?></count-up>
         </div>
-        <button id="btnAddPacient" class="btnAdd d-flex text-white justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#addPacient">
-            <i class="bi bi-plus-circle-fill"></i>
-            Agregar paciente
-        </button>
+        <div>
+            <button class="btnAdd d-flex gap-2 px-3 py-2 shadow text-white align-items-center" data-bs-toggle="modal" data-bs-target="#addPacient">
+                <i class="bi bi-plus-circle-fill fs-5"></i>
+                <span class="text-white">Nuevo Paciente</span>
+            </button>
+        </div>
     </div>
 
     <div class="modal fade" id="addPacient" tabindex="-1" aria-labelledby="addPacientLabel">
@@ -18,7 +20,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="formPaciente" action="<?php echo base_url('pacientes/create') ?>" method="POST" class="d-flex position-relative overflow-hidden">
+                    <form id="formPaciente" class="d-flex position-relative overflow-hidden">
                         <div id="formStep1" class="d-flex flex-column gap-3">
                             <section class="d-flex gap-3">
                                 <div class="d-flex flex-column w-50">
@@ -47,7 +49,7 @@
                                 </div>
                                 <div class="d-flex flex-column w-50">
                                     <label for="genero">Género</label>
-                                    <select name="genero" id="genero" class="form-select" required required>
+                                    <select name="genero" id="genero" class="form-select" required>
                                         <option value="" disabled selected></option>
                                         <option value="masculino">Masculino</option>
                                         <option value="femenino">Femenino</option>
@@ -140,17 +142,17 @@
                         <td class="text-start">
                             <div class="copy-container">
                                 <span class="copyText"><?= htmlspecialchars($p->documento) ?></span>
-                                <button class="bg-transparent copyButton">
+                                <button class="bg-transparent copyButton" type="button">
                                     <i style="color: var(--texto);" class="bi bi-copy fs-6"></i>
                                 </button>
                             </div>
                         </td>
                         <td>
                             <button data-id="<?= htmlspecialchars($p->id_paciente) ?>"
-                                class="btnEdit btn btn-success btn-sm text-white">
+                                class="btnEdit btn btn-success btn-sm text-white" type="button">
                                 <i class="bi bi-pencil-square fs-6"></i>
                             </button>
-                            <button class="btnDelete btn btn-danger btn-sm" data-id="<?= $p->id_paciente ?>">
+                            <button class="btnDelete btn btn-danger btn-sm" data-id="<?= htmlspecialchars($p->id_paciente) ?>" type="button">
                                 <i class="bi bi-trash-fill fs-6"></i>
                             </button>
                         </td>

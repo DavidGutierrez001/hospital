@@ -74,6 +74,7 @@ $route['dashboard/pacientes'] = 'modulos/PacientesController/index';
 $route['dashboard/medicos'] = 'modulos/MedicosController/index';
 $route['dashboard/citas'] = 'modulos/CitasController/index';
 $route['dashboard/historial'] = 'modulos/HistorialController/index';
+$route['dashboard/farmacia'] = 'modulos/FarmaciaController/index';
 
 $route['pacientes/view_editar/(:num)'] = 'modulos/PacientesController/view_editar/$1';
 $route['pacientes/update/(:num)'] = 'modulos/PacientesController/update/$1';
@@ -95,3 +96,5 @@ $route['citas/reagendar_cita'] = 'modulos/CitasController/reagendar_cita';
 $route['historial/get_historial_by_id/(:num)'] = 'modulos/HistorialController/get_historial_by_id/$1';
 $route['historial/create_historial'] = 'modulos/HistorialController/create_historial';
 $route['historial/delete_historial/(:num)'] = 'modulos/HistorialController/delete_historial/$1';
+
+

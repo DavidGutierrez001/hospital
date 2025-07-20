@@ -53,7 +53,7 @@ class PacientesController extends MY_Controller
         $this->form_validation->set_rules('direccion', 'Dirección', 'trim|htmlspecialchars');
 
         if ($this->form_validation->run() == FALSE) {
-            echo json_encode(['success' => false, 'message' => validation_errors()]);
+            echo json_encode(['success' => false, 'message' => strip_tags(validation_errors())]);
             return;
         }
 
@@ -104,7 +104,7 @@ class PacientesController extends MY_Controller
         $this->form_validation->set_rules('password', 'Contraseña', 'required|min_length[3]|max_length[20]|trim|htmlspecialchars');
 
         if ($this->form_validation->run() == FALSE) {
-            echo json_encode(['success' => false, 'message' => validation_errors()]);
+            echo json_encode(['success' => false, 'message' => strip_tags(validation_errors())]);
             return;
         }
 

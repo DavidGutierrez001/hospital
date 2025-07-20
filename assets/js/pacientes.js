@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
 	document.addEventListener("click", function (e) {
 		const btnEdit = e.target.closest(".btnEdit");
 		if (btnEdit) {
@@ -43,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						timerProgressBar: true,
 					}).then(() => {
 						if (data.success) {
-							window.location.href = "/hospital/dashboard/pacientes";
+							window.location.reload();
 						}
 					});
 				})
@@ -74,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				});
 				return;
 			}
-			fetch("pacientes/create", {
+			fetch("/hospital/pacientes/create", {
 				method: "POST",
 				body: new FormData(formulario),
 			})
@@ -94,7 +93,6 @@ document.addEventListener("DOMContentLoaded", function () {
 					}
 				})
 				.catch((err) => {
-					console.error("Error en la solicitud:", err);
 					Swal.fire({
 						icon: "error",
 						title: "Error",
@@ -130,7 +128,6 @@ document.addEventListener("DOMContentLoaded", function () {
 							if (data.success) cargarPacientes();
 						})
 						.catch((err) => {
-							console.error("Error:", err);
 							Swal.fire("Error", "No se pudo eliminar el paciente", "error");
 						});
 				}
