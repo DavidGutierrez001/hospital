@@ -39,7 +39,7 @@
 
             <nav class="sidebar-nav">
                 <ul class="nav-list d-flex flex-column gap-1">
-                    <h1 class="nav-category">MENÚ</h1>
+                    <h1 class="nav-category">GENERAL</h1>
                     <li class="nav-item">
                         <a href="<?= base_url('dashboard/home') ?>" class="nav-link-sidebar <?= current_url() == base_url('dashboard/home') ? 'selected-nav-link-sidebar' : '' ?>">
                             <i class="bi bi-grid-1x2-fill"></i> Dashboard
@@ -70,11 +70,6 @@
                             <i class="bi bi-capsule"></i> Farmacia
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="<?= base_url('dashboard/reportes') ?>" class="nav-link-sidebar <?= current_url() == base_url('dashboard/reportes') ? 'selected-nav-link-sidebar' : '' ?>">
-                            <i class="bi bi-bar-chart-fill"></i> Reportes
-                        </a>
-                    </li>
                 </ul>
                 <ul class="mt-auto">
                     <li class="nav-item">
@@ -93,7 +88,18 @@
 
         <main class="dashboard-main d-flex flex-column gap-3">
             <header class="dashboard-header">
-                <div class="dashboard-header-nav d-flex align-items-center justify-content-end w-100 gap-3">
+                <div class="dashboard-header-nav d-flex align-items-center justify-content-between w-100 gap-3">
+                    <div>
+                        <span class="opacity-50">Bienvenido!,</span>
+                        <span class="fw-semibold">
+                            <?=
+                            isset($this->session->userdata['primer_nombre']) || isset($this->session->userdata['primer_apellido'])
+                                ? htmlspecialchars(($this->session->userdata['primer_nombre'] ?? '') . ' ' . ($this->session->userdata['primer_apellido'] ?? ''))
+                                : 'Usuario'
+                            ?>
+                        </span>
+                    </div>
+
                     <button id="sidebarBtn" class="dashboard-header-nav-btn hamburger-btn position-relative" aria-label="Abrir menú lateral">
                         <i class="bi bi-list fs-5"></i>
                     </button>
@@ -148,8 +154,13 @@
         </main>
     </div>
 
+    <!-- Local -->
+
+    <script src="<?= base_url('assets/js/global.js') ?>"></script>
+    <script src="<?= base_url('assets/js/dashboard.js') ?>"></script>
+
     <!-- Librerías JS -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src=" https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.bootstrap5.js"></script>
@@ -157,7 +168,6 @@
     <script src="https://cdn.datatables.net/responsive/3.0.4/js/responsive.bootstrap5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/gh/lekoala/formidable-elements@master/dist/count-up.min.js"></script>
-    <script src="<?= base_url('assets/js/dashboard.js') ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 
@@ -221,7 +231,14 @@
                 search: "Buscar:",
                 zeroRecords: "No se encontraron registros coincidentes",
             },
-            order: [[0, "desc"]],
+            order: [
+                [0, "desc"]
+            ],
+            columnDefs: [{
+                width: "5%",
+                targets: '_all',
+                className: 'text-start'
+            }]
         });
     </script>
 </body>

@@ -97,4 +97,11 @@ $route['historial/get_historial_by_id/(:num)'] = 'modulos/HistorialController/ge
 $route['historial/create_historial'] = 'modulos/HistorialController/create_historial';
 $route['historial/delete_historial/(:num)'] = 'modulos/HistorialController/delete_historial/$1';
 
-
+$route['farmacia'] = 'modulos/FarmaciaController/index';
+$route['farmacia/register_product'] = 'modulos/FarmaciaController/register_product';
+$route['farmacia/searchPacientByDocument'] = 'modulos/FarmaciaController/searchPacientByDocument';
+$route['farmacia/register_sale'] = 'modulos/FarmaciaController/register_sale';
+$route['farmacia/view_editar_products/(:num)'] = 'modulos/FarmaciaController/view_editar/$1';
+$route['farmacia/update_product/(:num)'] = 'modulos/FarmaciaController/update_product/$1';
+$route['farmacia/delete_product/(:num)'] = 'modulos/FarmaciaController/delete_product/$1';
+$route['farmacia/agregarExistencias/(:num)'] = 'modulos/FarmaciaController/agregarExistencias/$1';

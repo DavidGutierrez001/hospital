@@ -61,6 +61,11 @@ a {
 	cursor: pointer;
 }
 
+.form-check-input:checked {
+	background-color: #4e995f;
+	border-color: #4e995f;
+}
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -151,7 +156,7 @@ button {
 .loader-button {
 	width: 25px;
 	height: 25px;
-	border: 2.5px solid var(--texto);
+	border: 2.5px solid;
 	border-bottom-color: transparent;
 	border-radius: 50%;
 	display: inline-block;
