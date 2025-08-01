@@ -100,7 +100,7 @@
             <thead>
                 <tr>
                     <th class="text-center" scope="col">#</th>
-                    <th class="w-25" scope="col">MEDICO</th>
+                    <th>MEDICO</th>
                     <th class="col text-start">DOCUMENTO</th>
                     <th scope="col">ESPECIALIDAD</th>
                     <th class="text-start" scope="col">CONTACTO</th>
@@ -114,7 +114,7 @@
                         <td class="text-center" scope="row">
                             <?php echo htmlspecialchars($medico->id_medico); ?>
                         </td>
-                        <td class="d-flex flex-column" scope="row">
+                        <td>
                             <?php echo htmlspecialchars($medico->primer_nombre . ' ' . $medico->segundo_nombre . ' ' . $medico->primer_apellido . ' ' . $medico->segundo_apellido); ?>
                             <span class="text-secondary">
                                 <?php echo htmlspecialchars($medico->email); ?>

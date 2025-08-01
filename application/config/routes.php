@@ -75,6 +75,7 @@ $route['dashboard/medicos'] = 'modulos/MedicosController/index';
 $route['dashboard/citas'] = 'modulos/CitasController/index';
 $route['dashboard/historial'] = 'modulos/HistorialController/index';
 $route['dashboard/farmacia'] = 'modulos/FarmaciaController/index';
+$route['dashboard/reportes'] = 'modulos/ReportesController/index';
 
 $route['pacientes/view_editar/(:num)'] = 'modulos/PacientesController/view_editar/$1';
 $route['pacientes/update/(:num)'] = 'modulos/PacientesController/update/$1';
@@ -97,7 +98,6 @@ $route['historial/get_historial_by_id/(:num)'] = 'modulos/HistorialController/ge
 $route['historial/create_historial'] = 'modulos/HistorialController/create_historial';
 $route['historial/delete_historial/(:num)'] = 'modulos/HistorialController/delete_historial/$1';
 
-$route['farmacia'] = 'modulos/FarmaciaController/index';
 $route['farmacia/register_product'] = 'modulos/FarmaciaController/register_product';
 $route['farmacia/searchPacientByDocument'] = 'modulos/FarmaciaController/searchPacientByDocument';
 $route['farmacia/register_sale'] = 'modulos/FarmaciaController/register_sale';
@@ -105,3 +105,8 @@ $route['farmacia/view_editar_products/(:num)'] = 'modulos/FarmaciaController/vie
 $route['farmacia/update_product/(:num)'] = 'modulos/FarmaciaController/update_product/$1';
 $route['farmacia/delete_product/(:num)'] = 'modulos/FarmaciaController/delete_product/$1';
 $route['farmacia/agregarExistencias/(:num)'] = 'modulos/FarmaciaController/agregarExistencias/$1';
+
+$route['reportes/export_citas'] = 'modulos/ReportesController/export_citas';
+$route['reportes/export_pacientes'] = 'modulos/ReportesController/export_pacientes';
+$route['reportes/export_ventas'] = 'modulos/ReportesController/export_ventas';
+$route['reportes/export_productos'] = 'modulos/ReportesController/export_productos';

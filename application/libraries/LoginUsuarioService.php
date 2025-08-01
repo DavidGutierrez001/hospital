@@ -22,7 +22,7 @@ class LoginUsuarioService
         }
 
         if ($usuario->id_rol == 1) {
-            show_error('La interfaz de paciente no esta habilitada hasta el momento.', 403, 'En desarrollo!');
+            show_error('La interfaz para el paciente no esta habilitada hasta el momento.', 403, 'Posible futuro desarrollo');
             return;
         }
 

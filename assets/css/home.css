@@ -6,6 +6,8 @@ html {
 	width: 100%;
 	min-width: 320px;
 	overflow-x: hidden;
+	background-image: url("https://responsively.app/_next/static/media/background-hero.f7320010.svg");
+	background-size: cover;
 }
 
 header {
@@ -22,28 +24,16 @@ header {
 	gap: 100px;
 	padding-inline: 150px;
 	padding-block: 25px;
-	background-color: #e6f9f7;
 }
 
 .wave-container-left {
+	width: 100%;
+	max-width: 85rem;
 	display: flex;
 	flex-direction: column;
-	width: 60%;
-	justify-content: center;
-	color: #1e1e1e;
-	gap: 1rem;
-}
-
-.wave-container-right {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 100%;
-}
-
-.wave-container-right img {
-	height: 100%;
 	width: 100%;
+	justify-content: center;
+	color: #0f172a;
 }
 
 .nav-item a {
@@ -91,9 +81,9 @@ header {
 }
 
 .used-technologies {
-	min-height: 10rem;
+	min-height: 11rem;
 	width: 100%;
-	gap: 9rem;
+	gap: 5rem;
 	padding-inline: 2rem;
 }
 
@@ -168,11 +158,6 @@ header #btnMenu {
 		width: auto;
 		padding: 10px;
 		text-align: center;
-	}
-
-	.wave-container-right {
-		width: auto;
-		padding: 10px;
 	}
 
 	.button {

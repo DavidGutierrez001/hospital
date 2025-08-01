@@ -1,0 +1,6 @@
+{
+    "poppins": {
+        "normal": "C:\\xampp\\htdocs\\hospital\\application\\libraries\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/poppins_normal_18cdd0bfe89ff4334bd75ffd4e786578",
+        "bold": "poppins_bold_71bd3f315b9b46d11123794301175367"
+    }
+}

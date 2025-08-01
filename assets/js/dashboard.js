@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					fetch("logout")
 						.then((res) => {
 							if (res.ok) {
-								location.href = "/hospital/login";
+								window.location.href = "/hospital";
 							} else {
 								throw new Error("Error al cerrar sesión");
 							}

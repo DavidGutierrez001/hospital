@@ -4,17 +4,17 @@
 <head>
     <title>Royal Care</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#eaf8ff">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/header.css') ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/home.css') ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/footer.css') ?>">
+    <meta name="theme-color" content="#f0edf1">
+    <link rel="stylesheet" href="<?= base_url('assets/css/header.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/home.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/footer.css') ?>">
 </head>
 
 <body>
-    <header class="position-sticky top-0 top-in z-3 w-100 d-flex bg-white align-items-center justify-content-between shadow-sm">
-        <img class="logo" style="height: 35px;" src="<?php echo base_url('assets/img/logo.svg') ?>" alt="">
+    <header class="position-sticky top-0 top-in z-3 w-100 d-flex align-items-center justify-content-between">
+        <img class="logo" style="height: 35px;" src="<?= base_url('assets/img/logo6.svg') ?>" alt="">
         <nav>
-            <ul id="navbar" class="nav fw-medium d-flex">
+            <ul style="font-size: .875rem;" id="navbar" class="nav d-flex">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Inicio</a>
                 </li>

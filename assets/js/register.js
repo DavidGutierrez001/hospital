@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
 	const containForm = document.getElementById("containForm");
 	const btnNext = document.getElementById("btnNext");
 	const step1 = document.getElementById("step1");
@@ -7,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	const stepInfo = document.getElementById("stepInfo");
 	const showPassword = document.getElementById("showPassword");
 	const password = document.getElementById("password");
-
 
 	if (showPassword && password) {
 		showPassword.addEventListener("click", function () {
@@ -23,12 +21,10 @@ document.addEventListener("DOMContentLoaded", function () {
 		console.warn("No se encontró el botón 'Mostrar contraseña' o el input.");
 	}
 
-	
 	if (btnNext) {
 		btnNext.addEventListener("click", handleNextClick);
 	}
 
-	
 	if (step1) {
 		step1.addEventListener("keydown", function (e) {
 			if (e.key === "Enter") {
@@ -38,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 	}
 
-	
 	if (containForm) {
 		containForm.addEventListener("submit", function (e) {
 			if (step1.classList.contains("active")) {
@@ -52,7 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	function wait(ms) {
 		return new Promise((resolve) => setTimeout(resolve, ms));
 	}
-
 
 	async function handleNextClick() {
 		const email = document.getElementById("email");
@@ -114,7 +108,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			return;
 		}
 
-	
 		step2.innerHTML = `
 			<div class="d-flex gap-3">
 				<div class="flex-grow-1">
@@ -138,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			</div>
 			<div class="d-flex flex-column">
 				<label for="id_rol" class="form-label">Rol</label>
-				<select name="id_rol" id="rol" class="">
+				<select name="id_rol" id="rol" class="bg-white">
 					<option value="" selected disabled>Selecciona un rol</option>
 					<option value="1">Paciente</option>
 					<option value="2">Médico</option>
@@ -150,14 +143,14 @@ document.addEventListener("DOMContentLoaded", function () {
 				<button type="button" id="btnBack" class="lh-2-5 flex-grow-0 d-flex justify-content-center align-items-center text-center gap-3 text-secondary">
 					<i class="bi bi-arrow-left"></i>
 				</button>
-				<button type="submit" class="btn-create-account lh-2-5 flex-grow-1 justify-content-center align-items-center d-flex gap-3 text-white">
+				<button type="submit" style="background-color: #10b981;" class="lh-2-5 flex-grow-1 justify-content-center align-items-center d-flex gap-3 text-white">
 					Crear Cuenta
 				</button>
 			</div>
 		`;
 
 		const stepTitle = document.getElementById("stepTitle");
-		
+
 		if (step1.classList.contains("active")) {
 			step1.classList.remove("active");
 			step2.classList.add("active");

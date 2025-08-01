@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Panel de control del hospital para la gestión eficiente de pacientes, notificaciones y administración de usuarios.">
+    <meta name="description" content="Panel de control del hospital para la gestión eficientpoee de pacientes, notificaciones y administración de usuarios.">
     <title><?= isset($title) ? htmlspecialchars($title) : 'Sin título' ?></title>
 
     <link rel="icon" href="<?= base_url('/assets/img/logo2.svg') ?>" type="image/x-icon">
@@ -34,7 +34,7 @@
     <div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 min-vh-100 bg-dark bg-opacity-25 d-none"></div>
 
     <div class="d-flex dashboard-contain min-vh-100 vh-100">
-        <aside id="sidebarContent" class="sidebar p-3 position-fixed" role="navigation" aria-label="Barra lateral">
+        <aside id="sidebarContent" class="sidebar p-3 position-fixed">
             <img class="sidebar-logo" src="<?= base_url('/assets/img/logo6.svg') ?>" alt="Logo de la app">
 
             <nav class="sidebar-nav">
@@ -70,6 +70,11 @@
                             <i class="bi bi-capsule"></i> Farmacia
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url('dashboard/reportes') ?>" class="nav-link-sidebar <?= current_url() == base_url('dashboard/reportes') ? 'selected-nav-link-sidebar' : '' ?>">
+                            <i class="bi bi-bar-chart-fill"></i> Reportes
+                        </a>
+                    </li>
                 </ul>
                 <ul class="mt-auto">
                     <li class="nav-item">
@@ -88,17 +93,7 @@
 
         <main class="dashboard-main d-flex flex-column gap-3">
             <header class="dashboard-header">
-                <div class="dashboard-header-nav d-flex align-items-center justify-content-between w-100 gap-3">
-                    <div>
-                        <span class="opacity-50">Bienvenido!,</span>
-                        <span class="fw-semibold">
-                            <?=
-                            isset($this->session->userdata['primer_nombre']) || isset($this->session->userdata['primer_apellido'])
-                                ? htmlspecialchars(($this->session->userdata['primer_nombre'] ?? '') . ' ' . ($this->session->userdata['primer_apellido'] ?? ''))
-                                : 'Usuario'
-                            ?>
-                        </span>
-                    </div>
+                <div class="dashboard-header-nav d-flex align-items-center justify-content-end w-100 gap-3">
 
                     <button id="sidebarBtn" class="dashboard-header-nav-btn hamburger-btn position-relative" aria-label="Abrir menú lateral">
                         <i class="bi bi-list fs-5"></i>
@@ -171,18 +166,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 
-    <!-- AutoAnimate -->
-    <script type="module">
-        import autoAnimate from 'https://cdn.jsdelivr.net/npm/@formkit/auto-animate';
-        const el = document.querySelector('.modal-content');
-        if (el) {
-            autoAnimate(el, {
-                duration: 300,
-                easing: 'ease-in-out'
-            });
-        }
-    </script>
-
     <?php if (isset($library)) : ?>
         <?php foreach ($library as $lib) : ?>
             <script src="<?= $lib ?>"></script>
@@ -241,6 +224,7 @@
             }]
         });
     </script>
+
 </body>
 
 </html>

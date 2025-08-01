@@ -1,12 +1,6 @@
 .bg-form {
-	background-color: hsla(217, 100%, 94%, 1);
-	background-image: radial-gradient(
-			at 72% 75%,
-			hsla(330, 100%, 96%, 1) 0px,
-			transparent 50%
-		),
-		radial-gradient(at 25% 39%, rgb(231, 245, 255) 0px, transparent 50%),
-		radial-gradient(at 89% 31%, rgb(231, 251, 255) 0px, transparent 50%);
+	background-image: url("https://responsively.app/_next/static/media/background-hero.f7320010.svg");
+	background-size: cover;
 	min-height: 100vh;
 }
 
@@ -18,22 +12,16 @@
 	-webkit-backdrop-filter: blur(19.6px);
 	border: 1px solid rgba(255, 255, 255, 0.44);
 	max-width: 500px;
+	height: 100%;
 	width: 100%;
-	transition: all 0.3s ease-in-out;
-	overflow: hidden;
-	min-height: 515px;
+}
+
+form input {
+	background-color: #ffffffb7 !important;
 }
 
 .text-pass1 {
 	font-size: 0.8rem;
-}
-
-#stepTitle {
-	color: #5d5df0;
-	background-image: linear-gradient(45deg, #5d5df0, #d75df0 73%);
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
 }
 
 #btnNext {
@@ -78,15 +66,15 @@
 }
 
 .bg-purple {
-	background-color: #5e5df0;
+	background-color: #10b981;
 }
 
 .bg-purple:hover {
-	background-color: #4a4ad0;
+	background-color: #12c98c;
 }
 
 .text-purple {
-	color: #5e5df0;
+	color: #10b981;
 }
 
 .bi-envelope-at-fill {

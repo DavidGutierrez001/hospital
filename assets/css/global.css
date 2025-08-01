@@ -62,8 +62,8 @@ a {
 }
 
 .form-check-input:checked {
-	background-color: #4e995f;
-	border-color: #4e995f;
+	background-color: #29b284;
+	border-color: #29b284;
 }
 
 input[type="text"],
@@ -76,6 +76,7 @@ input[type="time"],
 input[type="search"],
 input[type="url"],
 input[type="file"],
+input[type="month"],
 select,
 textarea {
 	border: 0;
@@ -146,8 +147,8 @@ button {
 }
 
 .title-module {
-	color: #5ead5e;
-	background-image: linear-gradient(135deg, #5ead5e, #009771 50%);
+	color: #29b284;
+	background-image: linear-gradient(135deg, #29b284, #00b8ae 80%);
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;

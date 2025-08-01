@@ -1,25 +1,27 @@
 <?php
-// function check_auth()
-// {
-//     $CI = &get_instance();
+function check_auth()
+{
+    $CI = &get_instance();
 
-//     $publicos = [
-//         'homecontroller' => ['index'],
-//         'authcontroller' => ['login', 'login_view', 'logout'],
-//         'registercontroller' => ['register', 'register_view'],
-//         'emailvalidationcontroller' => ['verify_email'],
-//     ];
+    $publicos = [
+        'indexcontroller' => ['index'],
+        'logincontroller' => ['login', 'login_view'],
+        'registercontroller' => ['register', 'register_view'],
+        'emailvalidationcontroller' => ['verify_email'],
+        'authcontroller' => ['logout'],
+    ];
 
-//     $controlador_actual = strtolower($CI->router->fetch_class());
-//     $metodo_actual = strtolower($CI->router->fetch_method());
 
-//     if (isset($publicos[$controlador_actual])) {
-//         if (in_array($metodo_actual, $publicos[$controlador_actual])) {
-//             return;
-//         }
-//     }
+    $controlador_actual = strtolower($CI->router->fetch_class());
+    $metodo_actual = strtolower($CI->router->fetch_method());
 
-//     if (!$CI->session->userdata('id_usuario')) {
-//         redirect('login');
-//     }
-// }
+    if (isset($publicos[$controlador_actual])) {
+        if (in_array($metodo_actual, $publicos[$controlador_actual])) {
+            return;
+        }
+    }
+
+    if (!$CI->session->userdata('id_usuario')) {
+        redirect('/');
+    }
+}
