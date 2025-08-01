@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-07-2025 a las 19:27:39
+-- Tiempo de generación: 01-08-2025 a las 07:09:34
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -42,30 +42,13 @@ CREATE TABLE `citas_medicas` (
 --
 
 INSERT INTO `citas_medicas` (`id_cita`, `id_paciente`, `id_medico`, `fecha_cita`, `hora_inicio`, `hora_fin`, `estado_cita`) VALUES
-(8, 6, 11, '2025-07-10', '14:00:00', '14:30:00', 'Cancelada'),
-(9, 3, 11, '2025-07-09', '08:00:00', '08:30:00', 'Asistida'),
-(11, 7, 15, '2025-07-17', '07:30:00', '08:00:00', 'Programada'),
-(12, 9, 19, '2025-07-17', '14:00:00', '14:30:00', 'Cancelada'),
-(14, 10, 19, '2025-07-12', '08:30:00', '09:00:00', 'Programada'),
-(15, 4, 19, '2025-07-18', '09:20:00', '09:50:00', 'Programada'),
-(16, 9, 20, '2025-07-16', '10:00:00', '10:30:00', 'Cancelada');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `detalle_recetas`
---
-
-CREATE TABLE `detalle_recetas` (
-  `id_detalle_receta` int(11) NOT NULL,
-  `id_receta` int(11) DEFAULT NULL,
-  `id_medicamento` int(11) DEFAULT NULL,
-  `dosis` varchar(255) DEFAULT NULL,
-  `frecuencia` varchar(255) DEFAULT NULL,
-  `via_administracion` enum('Nasal','Oral','Oftalmica','Topica') DEFAULT NULL,
-  `duracion_tratamiento` varchar(255) DEFAULT NULL,
-  `instrucciones_adicionales` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(8, 6, 11, '2025-08-01', '14:00:00', '14:30:00', 'Asistida'),
+(9, 3, 11, '2025-07-31', '08:00:00', '08:30:00', 'Asistida'),
+(11, 7, 15, '2025-07-30', '07:00:00', '07:30:00', 'Programada'),
+(12, 9, 19, '2025-08-01', '15:00:00', '15:30:00', 'Asistida'),
+(14, 10, 19, '2025-07-31', '08:30:00', '09:00:00', 'Asistida'),
+(15, 4, 19, '2025-07-31', '09:20:00', '09:50:00', 'Programada'),
+(16, 9, 20, '2025-07-31', '10:00:00', '10:30:00', 'Asistida');
 
 -- --------------------------------------------------------
 
@@ -113,6 +96,29 @@ INSERT INTO `disponibilidad_medicos` (`id_disponibilidad`, `id_medico`, `dia_sem
 (11, 20, 'Sunday', '14:00:00', '21:00:00'),
 (12, 31, 'Tuesday', '09:00:00', '16:00:00'),
 (13, 32, 'Wednesday', '07:00:00', '14:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `entradas`
+--
+
+CREATE TABLE `entradas` (
+  `id_entrada` int(11) NOT NULL,
+  `id_producto` int(11) DEFAULT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  `fecha_entrada` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `entradas`
+--
+
+INSERT INTO `entradas` (`id_entrada`, `id_producto`, `cantidad`, `fecha_entrada`) VALUES
+(1, 1, 5, '2025-07-24 21:11:35'),
+(2, 1, 5, '2025-07-24 21:14:11'),
+(3, 11, 3, '2025-07-24 21:53:37'),
+(4, 16, 5, '2025-07-25 07:32:37');
 
 -- --------------------------------------------------------
 
@@ -194,29 +200,6 @@ INSERT INTO `historial_medico` (`id_historial`, `id_paciente`, `id_medico`, `fec
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `medicamentos`
---
-
-CREATE TABLE `medicamentos` (
-  `id_medicamento` int(11) NOT NULL,
-  `nombre_comercial` varchar(255) DEFAULT NULL,
-  `descripcion` varchar(255) DEFAULT NULL,
-  `receta_especial` tinyint(1) DEFAULT NULL,
-  `activo` tinyint(1) DEFAULT NULL,
-  `fecha_registro` date DEFAULT NULL,
-  `existencias` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `medicamentos`
---
-
-INSERT INTO `medicamentos` (`id_medicamento`, `nombre_comercial`, `descripcion`, `receta_especial`, `activo`, `fecha_registro`, `existencias`) VALUES
-(1, 'Dolex', 'Analgéstico y antipirético', 0, 1, '2025-07-19', 20);
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `medicos`
 --
 
@@ -243,7 +226,7 @@ INSERT INTO `medicos` (`id_medico`, `id_usuario`, `id_especialidad`, `tipo_docum
 (19, 61, 2, 'CC', '26699407', 2589954, 1),
 (20, 62, 4, 'CE', '85761305', 89978413, 1),
 (31, 78, 5, 'CC', '39170164', 6584713, 1),
-(32, 79, 4, 'CC', '62381407', 54254878, 1);
+(32, 79, 4, 'CC', '62381407', 54254878, 0);
 
 -- --------------------------------------------------------
 
@@ -264,10 +247,10 @@ CREATE TABLE `modulos` (
 INSERT INTO `modulos` (`id_modulo`, `controlador`, `ruta`) VALUES
 (1, 'PacientesController', 'dashboard/pacientes'),
 (2, 'MedicosController', 'dashboard/medicos'),
-(3, 'CitasController', NULL),
-(4, 'HistorialController', NULL),
-(5, 'Farmacia', NULL),
-(6, 'ReportesController', NULL),
+(3, 'CitasController', 'dashboard/citas'),
+(4, 'HistorialController', 'dashboard/historial'),
+(5, 'Farmacia', 'dashboard/farmacia'),
+(6, 'ReportesController', 'dashboard/reportes'),
 (7, 'HomeController', 'dashboard/home');
 
 -- --------------------------------------------------------
@@ -352,6 +335,36 @@ INSERT INTO `permisos` (`id_permiso`, `id_rol`, `id_modulo`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `productos`
+--
+
+CREATE TABLE `productos` (
+  `id_producto` int(11) NOT NULL,
+  `nombre_comercial` varchar(255) DEFAULT NULL,
+  `descripcion` varchar(255) DEFAULT NULL,
+  `receta_especial` tinyint(1) DEFAULT NULL,
+  `activo` tinyint(1) DEFAULT NULL,
+  `fecha_registro` date DEFAULT NULL,
+  `existencias` int(11) DEFAULT NULL,
+  `precio` decimal(10,2) DEFAULT NULL,
+  `eliminado` tinyint(4) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id_producto`, `nombre_comercial`, `descripcion`, `receta_especial`, `activo`, `fecha_registro`, `existencias`, `precio`, `eliminado`) VALUES
+(1, 'Acetamonifén Dolex 500mg x10', 'Analgéstico y antipirético', 0, 1, '2025-07-24', 30, '3600.00', 0),
+(10, 'Ibuprofeno 500mg Caja x60', 'Antiinflamatorio no esteroideo, utilizado frecuentemente como antipirético, analgésico y antiinflamatorio', 0, 1, '2025-07-23', 7, '22500.00', 0),
+(11, 'Amoxicilina 500mg 50 Cápsulas', 'Antibiótico semisintético derivado de la penicilina', 0, 1, '2025-07-23', 5, '7300.00', 0),
+(12, 'Paracetamol BAYER 500mg x30', 'Analgésicas y antipiréticas​​ utilizado principalmente para tratar la fiebre y el dolor leve y moderado', 0, 1, '2025-07-23', 12, '10600.00', 0),
+(15, 'aa', 'aa', 0, 1, '2025-07-24', 0, '12345678.00', 1),
+(16, 'prueba 2', 'prueba', 0, 1, '2025-07-25', 5, '2500.00', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `recepcionistas`
 --
 
@@ -375,10 +388,13 @@ INSERT INTO `recepcionistas` (`id_recepcionista`, `id_usuario`) VALUES
 --
 
 CREATE TABLE `recetas_medicas` (
-  `id_receta` int(11) NOT NULL,
-  `id_cita` int(11) DEFAULT NULL,
-  `fecha_emision` date DEFAULT NULL,
-  `estado_receta` enum('Emitida','Pendiente','Cancelada') DEFAULT NULL
+  `id_receta` int(11) DEFAULT NULL,
+  `id_medicamento` int(11) DEFAULT NULL,
+  `dosis` varchar(255) DEFAULT NULL,
+  `frecuencia` varchar(255) DEFAULT NULL,
+  `via_administracion` enum('Nasal','Oral','Oftalmica','Topica') DEFAULT NULL,
+  `duracion_tratamiento` varchar(255) DEFAULT NULL,
+  `instrucciones_adicionales` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -402,6 +418,28 @@ INSERT INTO `roles` (`id_rol`, `nombre_rol`) VALUES
 (3, 'Recepcionista'),
 (4, 'Farmaceutico'),
 (5, 'Administrador');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `salidas`
+--
+
+CREATE TABLE `salidas` (
+  `id_salida` int(11) NOT NULL,
+  `id_producto` int(11) DEFAULT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  `fecha_salida` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `salidas`
+--
+
+INSERT INTO `salidas` (`id_salida`, `id_producto`, `cantidad`, `fecha_salida`) VALUES
+(3, 12, 1, '2025-07-24 20:40:09'),
+(4, 11, 3, '2025-07-24 21:51:43'),
+(5, 16, 1, '2025-07-25 07:33:22');
 
 -- --------------------------------------------------------
 
@@ -443,14 +481,15 @@ INSERT INTO `usuarios` (`id_usuario`, `id_rol`, `primer_nombre`, `segundo_nombre
 (32, 1, 'Pepito', 'Andres', 'Perez', 'Sanchez', 'PepitoPerez@gmail.com', '$2y$10$uDNgVQy42gv1N3WaXj5bdex1NCtBUS0JaNQlOAfv5o7Y0dBpAyL36', '2025-06-26 08:15:06', 1),
 (33, 1, 'Maria', 'Jose', 'Sanchez', 'Garzon', 'MariaJose@gmail.com', '$2y$10$oCqKjQQPJPEkkLbuS2oDCujioCNXVSblhAfr5GP313FCvpvxmDd8S', '2025-06-26 08:28:01', 1),
 (34, 1, 'Sofia', '', 'Alvarez', 'Mora', 'SofiaAlvarez@gmail.com', '$2y$10$lm6z5OzCR2GVmuA5uw8zcOCXyN8tH8gmVtx.7u3vpLAYwN5ryPe8S', '2025-06-26 08:30:54', 1),
-(47, 1, 'Mario', '', 'Mendez', '', 'MarioMendez@gmail.com', '$2y$10$gje1T2zV6qUyqF8XfaB3BeqWbjwCxzmnrthC04Uv9ogSG65x17MAe', '2025-06-26 10:02:51', 1),
+(47, 1, 'Felipe', '', 'Mendez', '', 'MarioMendez@gmail.com', '$2y$10$gje1T2zV6qUyqF8XfaB3BeqWbjwCxzmnrthC04Uv9ogSG65x17MAe', '2025-06-26 10:02:51', 1),
 (51, 2, 'Felipe', 'Andres', 'Sanchez', 'Gonzalez', 'FelipeSanchez@gmail.com', '$2y$10$r.q0KPU4ToZDqsF46fECI.s4H5KA.l/0myl/3BlHq/Y22LGFCRcZG', '2025-07-02 07:38:16', 1),
 (56, 2, 'Maria', 'Camila', 'Sanchez', 'Bautista', 'MariaBautista@gmail.com', '$2y$10$XBLnx2rugSY2IxMSdW031u.TCoOUbPp0tkA2LC0L3T33IlKVix2De', '2025-07-02 07:41:23', 1),
 (59, 2, 'Simon', 'Alfredo', 'Neiza', '', 'SimonNeiza@gmail.com', '$2y$10$17EOlU1Tpm406qgoe6HeveIP4P.vPNt3kQJFOkJiJNgqmbgi958Fy', '2025-07-02 08:01:15', 1),
 (61, 2, 'Laura', 'Sofia', 'Mendez', '', 'LauraMendez@gmail.com', '$2y$10$GRdgdQQByi93SLxQ9cyRqekdEN/1vse1hk1GTDpYdkBCKFCDGhdBa', '2025-07-02 08:04:25', 1),
 (62, 2, 'Edison', 'Andres', 'Ortiz', '', 'EdisonOrtiz@gmail.com', '$2y$10$0lZzgHdLk.ezd/uoCIr2DexhfctVHaw3lGICrHR3uyrhWU6bAQ73a', '2025-07-03 11:13:17', 1),
 (78, 2, 'Maria', '', 'Gomez', '', 'MariaGomez@gmail.com', '$2y$10$G3p.RxWDDjHvMnSZeO4ZD.ll.7MhpaPgzGNUnSMmOyo7/nbmc4dTy', '2025-07-03 08:47:58', 1),
-(79, 2, 'Juan', 'David', 'Molina', '', 'JuanMolina@gmail.com', '$2y$10$gR7KobOT0VdhqluZhybK7uOO06qNNtuh517n0wn3m6nOeB/pyQoDe', '2025-07-03 08:48:21', 1);
+(79, 2, 'Juan', 'David', 'Molina', '', 'JuanMolina@gmail.com', '$2y$10$gR7KobOT0VdhqluZhybK7uOO06qNNtuh517n0wn3m6nOeB/pyQoDe', '2025-07-03 08:48:21', 0),
+(82, 1, 'Carlos', '', 'Castro', '', 'Carlos.castro@gmail.com', '$2y$10$qLD7.MJ3vCjmuRV4f5RmWuQqkJDX1S1cwP0SZo1php0mDDCMTmu6m', '2025-07-28 09:43:57', 1);
 
 -- --------------------------------------------------------
 
@@ -460,12 +499,28 @@ INSERT INTO `usuarios` (`id_usuario`, `id_rol`, `primer_nombre`, `segundo_nombre
 
 CREATE TABLE `ventas` (
   `id_venta` int(11) NOT NULL,
-  `id_medicamento` int(11) DEFAULT NULL,
+  `id_producto` int(11) DEFAULT NULL,
   `id_paciente` int(11) DEFAULT NULL,
   `fecha_venta` datetime DEFAULT NULL,
   `total_venta` decimal(10,0) DEFAULT NULL,
   `estado_venta` enum('Comprado','Cancelado') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `ventas`
+--
+
+INSERT INTO `ventas` (`id_venta`, `id_producto`, `id_paciente`, `fecha_venta`, `total_venta`, `estado_venta`) VALUES
+(23, 1, 1, '2025-07-23 08:35:27', '3600', 'Comprado'),
+(24, 1, 3, '2025-07-22 08:37:35', '7200', 'Comprado'),
+(25, 12, 4, '2025-07-21 08:37:35', '18500', 'Comprado'),
+(26, 12, 5, '2025-07-20 10:06:32', '18500', 'Comprado'),
+(27, 12, 7, '2025-07-19 10:11:14', '37000', 'Comprado'),
+(28, 10, 8, '2025-07-18 10:11:14', '45000', 'Comprado'),
+(33, 12, 9, '2025-08-01 20:37:35', '10600', 'Comprado'),
+(34, 12, 1, '2025-08-01 20:40:09', '10600', 'Comprado'),
+(35, 11, 8, '2025-08-01 21:51:43', '21900', 'Comprado'),
+(36, 16, 4, '2025-07-01 07:33:22', '2500', 'Comprado');
 
 --
 -- Índices para tablas volcadas
@@ -478,14 +533,6 @@ ALTER TABLE `citas_medicas`
   ADD PRIMARY KEY (`id_cita`),
   ADD KEY `id_medico` (`id_medico`),
   ADD KEY `citas_medicas_ibfk_1` (`id_paciente`);
-
---
--- Indices de la tabla `detalle_recetas`
---
-ALTER TABLE `detalle_recetas`
-  ADD PRIMARY KEY (`id_detalle_receta`),
-  ADD KEY `id_receta` (`id_receta`),
-  ADD KEY `id_medicamento` (`id_medicamento`);
 
 --
 -- Indices de la tabla `detalle_ventas`
@@ -501,6 +548,13 @@ ALTER TABLE `detalle_ventas`
 ALTER TABLE `disponibilidad_medicos`
   ADD PRIMARY KEY (`id_disponibilidad`),
   ADD KEY `id_medico` (`id_medico`);
+
+--
+-- Indices de la tabla `entradas`
+--
+ALTER TABLE `entradas`
+  ADD PRIMARY KEY (`id_entrada`),
+  ADD KEY `id_medicamento` (`id_producto`);
 
 --
 -- Indices de la tabla `especialidades`
@@ -522,12 +576,6 @@ ALTER TABLE `historial_medico`
   ADD PRIMARY KEY (`id_historial`),
   ADD KEY `fk_paciente` (`id_paciente`),
   ADD KEY `fk_medico` (`id_medico`);
-
---
--- Indices de la tabla `medicamentos`
---
-ALTER TABLE `medicamentos`
-  ADD PRIMARY KEY (`id_medicamento`);
 
 --
 -- Indices de la tabla `medicos`
@@ -567,6 +615,12 @@ ALTER TABLE `permisos`
   ADD KEY `id_modulo` (`id_modulo`);
 
 --
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`id_producto`);
+
+--
 -- Indices de la tabla `recepcionistas`
 --
 ALTER TABLE `recepcionistas`
@@ -577,14 +631,21 @@ ALTER TABLE `recepcionistas`
 -- Indices de la tabla `recetas_medicas`
 --
 ALTER TABLE `recetas_medicas`
-  ADD PRIMARY KEY (`id_receta`),
-  ADD KEY `id_cita` (`id_cita`);
+  ADD KEY `id_receta` (`id_receta`),
+  ADD KEY `id_medicamento` (`id_medicamento`);
 
 --
 -- Indices de la tabla `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id_rol`);
+
+--
+-- Indices de la tabla `salidas`
+--
+ALTER TABLE `salidas`
+  ADD PRIMARY KEY (`id_salida`),
+  ADD KEY `id_medicamento` (`id_producto`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -599,8 +660,8 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `ventas`
   ADD PRIMARY KEY (`id_venta`),
-  ADD KEY `id_medicamento` (`id_medicamento`),
-  ADD KEY `ventas_ibfk_1` (`id_paciente`);
+  ADD KEY `ventas_ibfk_1` (`id_paciente`),
+  ADD KEY `id_producto` (`id_producto`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -613,16 +674,16 @@ ALTER TABLE `citas_medicas`
   MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT de la tabla `detalle_recetas`
---
-ALTER TABLE `detalle_recetas`
-  MODIFY `id_detalle_receta` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `disponibilidad_medicos`
 --
 ALTER TABLE `disponibilidad_medicos`
   MODIFY `id_disponibilidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT de la tabla `entradas`
+--
+ALTER TABLE `entradas`
+  MODIFY `id_entrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `farmaceuticos`
@@ -635,12 +696,6 @@ ALTER TABLE `farmaceuticos`
 --
 ALTER TABLE `historial_medico`
   MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `medicamentos`
---
-ALTER TABLE `medicamentos`
-  MODIFY `id_medicamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `medicos`
@@ -673,16 +728,34 @@ ALTER TABLE `permisos`
   MODIFY `id_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
+-- AUTO_INCREMENT de la tabla `productos`
+--
+ALTER TABLE `productos`
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT de la tabla `recepcionistas`
 --
 ALTER TABLE `recepcionistas`
   MODIFY `id_recepcionista` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `salidas`
+--
+ALTER TABLE `salidas`
+  MODIFY `id_salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+
+--
+-- AUTO_INCREMENT de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Restricciones para tablas volcadas
@@ -696,22 +769,16 @@ ALTER TABLE `citas_medicas`
   ADD CONSTRAINT `citas_medicas_ibfk_2` FOREIGN KEY (`id_medico`) REFERENCES `medicos` (`id_medico`);
 
 --
--- Filtros para la tabla `detalle_recetas`
---
-ALTER TABLE `detalle_recetas`
-  ADD CONSTRAINT `detalle_recetas_ibfk_1` FOREIGN KEY (`id_receta`) REFERENCES `recetas_medicas` (`id_receta`);
-
---
--- Filtros para la tabla `detalle_ventas`
---
-ALTER TABLE `detalle_ventas`
-  ADD CONSTRAINT `detalle_ventas_ibfk_2` FOREIGN KEY (`id_venta`) REFERENCES `ventas` (`id_venta`);
-
---
 -- Filtros para la tabla `disponibilidad_medicos`
 --
 ALTER TABLE `disponibilidad_medicos`
   ADD CONSTRAINT `disponibilidad_medicos_ibfk_1` FOREIGN KEY (`id_medico`) REFERENCES `medicos` (`id_medico`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `entradas`
+--
+ALTER TABLE `entradas`
+  ADD CONSTRAINT `entradas_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`);
 
 --
 -- Filtros para la tabla `farmaceuticos`
@@ -759,10 +826,10 @@ ALTER TABLE `recepcionistas`
   ADD CONSTRAINT `recepcionistas_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `recetas_medicas`
+-- Filtros para la tabla `salidas`
 --
-ALTER TABLE `recetas_medicas`
-  ADD CONSTRAINT `recetas_medicas_ibfk_1` FOREIGN KEY (`id_cita`) REFERENCES `citas_medicas` (`id_cita`) ON DELETE CASCADE;
+ALTER TABLE `salidas`
+  ADD CONSTRAINT `salidas_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`);
 
 --
 -- Filtros para la tabla `usuarios`
@@ -774,7 +841,8 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `pacientes` (`id_paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `pacientes` (`id_paciente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ventas_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
