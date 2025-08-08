@@ -5,14 +5,23 @@ html {
 	padding: 0;
 	width: 100%;
 	min-width: 320px;
-	overflow-x: hidden;
-	background-image: url("https://responsively.app/_next/static/media/background-hero.f7320010.svg");
-	background-size: cover;
+	background-color: rgb(255, 255, 255);
+	background-image: radial-gradient(
+			at 65% 10%,
+			hsla(277, 100%, 61%, 0.24) 0px,
+			transparent 50%
+		),
+		radial-gradient(
+			at 30% 50%,
+			hsla(208, 100%, 71%, 0.356) 0px,
+			transparent 50%
+		);
 }
 
 header {
 	height: 80px;
 	padding-inline: 50px;
+	transition: all 0.3s ease-in-out;
 }
 
 .wave {
@@ -24,6 +33,11 @@ header {
 	gap: 100px;
 	padding-inline: 150px;
 	padding-block: 25px;
+}
+
+.title-home {
+	font-size: clamp(3rem, -0.5rem + 7dvw, 4.5rem);
+	letter-spacing: -1px;
 }
 
 .wave-container-left {
@@ -99,6 +113,14 @@ header #btnMenu {
 	display: none;
 }
 
+.btn-login {
+	background-color: #f8f8f8f8;
+}
+
+.btn-login:hover {
+	background-color: #ffffff;
+}
+
 @media screen and (max-width: 1024px) {
 	header {
 		font-size: 14px;
@@ -135,16 +157,25 @@ header #btnMenu {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
-		align-items: flex-start;
-		padding: 1rem;
-		gap: 1rem;
+		align-items: center;
+		padding: 2rem;
+		gap: 2rem;
 		transform: translateX(100%);
 		transition: transform 0.3s ease;
+	}
+
+	a.nav-link {
+		padding: 0;
 	}
 
 	#navbar.active {
 		position: fixed;
 		transform: translate(0);
+	}
+
+	#navbar.active ~ #header,
+	#header .navbar.active {
+		border: red solid;
 	}
 
 	header #btnMenu {
@@ -157,8 +188,8 @@ header #btnMenu {
 		align-items: center;
 		justify-content: start;
 		gap: 0;
-		padding-block: 0;
-		padding-inline: 0;
+		padding-block: 0.5rem;
+		padding-inline: 0.5rem;
 	}
 
 	.wave h6 {

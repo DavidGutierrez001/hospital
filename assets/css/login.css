@@ -1,13 +1,21 @@
 .bg-form {
-	background-image: url("https://responsively.app/_next/static/media/background-hero.f7320010.svg");
-	background-size: cover;
+	background-color: rgb(255, 255, 255);
+	background-image: radial-gradient(
+			at 50% 10%,
+			hsla(277, 100%, 61%, 0.24) 0px,
+			transparent 50%
+		),
+		radial-gradient(
+			at 50% 90%,
+			hsla(208, 100%, 71%, 0.356) 0px,
+			transparent 50%
+		);
 	min-height: 100vh;
 }
 
 .form {
-	background: rgba(255, 255, 255, 0.699);
+	background: rgba(255, 255, 255, 0.459);
 	border-radius: 16px;
-	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
 	backdrop-filter: blur(19.6px);
 	-webkit-backdrop-filter: blur(19.6px);
 	max-width: 500px;
@@ -16,7 +24,7 @@
 }
 
 form input {
-	background-color: #ffffffb7 !important;
+	background-color: #ffffff8f !important;
 }
 
 #btnLogin {
@@ -24,7 +32,7 @@ form input {
 }
 
 #stepTitle {
-	color: #0f172a;
+	color: #3f3f3f;
 }
 
 .logo {
@@ -68,15 +76,15 @@ form input {
 }
 
 .bg-purple {
-	background-color: #10b981;
+	background-color: #3f3f3f;
 }
 
 .bg-purple:hover {
-	background-color: #12c98c;
+	background-color: #3d3d3d;
 }
 
 .text-purple {
-	color: #0f172a;
+	color: #3f3f3f;
 }
 
 .bi-envelope-at-fill {
@@ -146,4 +154,19 @@ form input {
 	background-color: rgb(255, 215, 215);
 	padding: 0.7rem;
 	border-radius: 3px;
+}
+
+@media (max-width: 768px) {
+	.bg-form {
+		background-image: radial-gradient(
+				at 90% 10%,
+				hsla(277, 100%, 61%, 0.24) 0px,
+				transparent 50%
+			),
+			radial-gradient(
+				at 10% 90%,
+				hsla(208, 100%, 71%, 0.356) 0px,
+				transparent 50%
+			);
+	}
 }

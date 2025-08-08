@@ -1,6 +1,6 @@
 <section class="wave wave-in position-relative">
 	<article class="wave-container-left text-center w-100 justify-content-between gap-5">
-		<h1 style="font-size: clamp(3rem, -0.5rem + 7dvw, 4.5rem); letter-spacing: -1px;" class=" m-0">
+		<h1 class="title-home m-0">
 			Una plataforma creada para la <span class="text-gradient">Gestión Hospitalaria
 
 			</span> y enfocada en la Eficiencia.
@@ -11,7 +11,7 @@
 		<div class="buttons d-flex align-items-center justify-content-center">
 			<a class="button btn-register text-center" href="<?php echo base_url('register'); ?>">Comienza ahora</a>
 			o
-			<a class="button border btn-login bg-transparent border border-2 border-dark text-black" href="<?php echo base_url('login'); ?>">Iniciar sesión</a>
+			<a class="button btn-login text-black" href="<?php echo base_url('login'); ?>">Iniciar sesión</a>
 		</div>
 	</article>
 </section>

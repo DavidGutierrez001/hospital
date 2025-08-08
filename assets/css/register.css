@@ -1,23 +1,30 @@
 .bg-form {
-	background-image: url("https://responsively.app/_next/static/media/background-hero.f7320010.svg");
-	background-size: cover;
+	background-color: rgb(255, 255, 255);
+	background-image: radial-gradient(
+			at 50% 10%,
+			hsla(277, 100%, 61%, 0.24) 0px,
+			transparent 50%
+		),
+		radial-gradient(
+			at 50% 90%,
+			hsla(208, 100%, 71%, 0.356) 0px,
+			transparent 50%
+		);
 	min-height: 100vh;
 }
 
 .form {
-	background: rgba(255, 255, 255, 0.47);
+	background: rgba(255, 255, 255, 0.459);
 	border-radius: 16px;
-	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	backdrop-filter: blur(19.6px);
 	-webkit-backdrop-filter: blur(19.6px);
-	border: 1px solid rgba(255, 255, 255, 0.44);
 	max-width: 500px;
 	height: 100%;
 	width: 100%;
 }
 
 form input {
-	background-color: #ffffffb7 !important;
+	background-color: #ffffff8f !important;
 }
 
 .text-pass1 {
@@ -26,6 +33,10 @@ form input {
 
 #btnNext {
 	height: 50px;
+}
+
+#stepTitle {
+	color: #3f3f3f;
 }
 
 #btnBack {
@@ -66,15 +77,15 @@ form input {
 }
 
 .bg-purple {
-	background-color: #10b981;
+	background-color: #3f3f3f;
 }
 
 .bg-purple:hover {
-	background-color: #12c98c;
+	background-color: #414244;
 }
 
 .text-purple {
-	color: #10b981;
+	color: #3f3f3f;
 }
 
 .bi-envelope-at-fill {
@@ -146,14 +157,17 @@ form input {
 	border-radius: 3px;
 }
 
-.btn-create-account:hover {
-	scale: 1.02;
-}
-
-.btn-create-account {
-	background-image: linear-gradient(
-		45deg,
-		rgba(94, 93, 240, 0.8) 0%,
-		rgba(188, 133, 244, 0.8) 100%
-	);
+@media (max-width: 768px) {
+	.bg-form {
+		background-image: radial-gradient(
+				at 90% 10%,
+				hsla(277, 100%, 61%, 0.24) 0px,
+				transparent 50%
+			),
+			radial-gradient(
+				at 10% 90%,
+				hsla(208, 100%, 71%, 0.356) 0px,
+				transparent 50%
+			);
+	}
 }

@@ -3,7 +3,7 @@
         <section id="containForm" class="form start-in px-3 py-5 m-3">
             <div class="d-flex flex-column text-secondary pb-4">
                 <h6 id="stepInfo" class="text-pass1 fw-bold">PASO 1 DE 2</h6>
-                <h3 id="stepTitle" class="fw-bold fs-3 title-module">Crea tu cuenta</h3>
+                <h3 id="stepTitle" class="fw-bold fs-3">Crea tu cuenta</h3>
             </div>
 
             <form action="<?php echo base_url('register_user'); ?>" method="POST" class="gap-5 d-flex position-relative overflow-hidden">

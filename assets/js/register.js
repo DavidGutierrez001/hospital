@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		email.classList.remove("input-error");
 		password.classList.remove("input-error");
 		btnText.textContent = "";
-		btnText.classList.add("loader");
+		btnText.classList.add("spinner-grow", "spinner-grow-sm");
 
 		try {
 			const [resp] = await Promise.all([
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			const errorEmail = document.getElementById("errorEmail");
 
 			btnText.textContent = "Continuar";
-			btnText.classList.remove("loader");
+			btnText.classList.remove("spinner-grow", "spinner-grow-sm");
 
 			if (!data.valido) {
 				email.classList.add("input-error");
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			});
 
 			btnText.textContent = "Continuar";
-			btnText.classList.remove("loader");
+			btnText.classList.remove("spinner-grow", "spinner-grow-sm");
 			return;
 		}
 
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				<button type="button" id="btnBack" class="lh-2-5 flex-grow-0 d-flex justify-content-center align-items-center text-center gap-3 text-secondary">
 					<i class="bi bi-arrow-left"></i>
 				</button>
-				<button type="submit" style="background-color: #10b981;" class="lh-2-5 flex-grow-1 justify-content-center align-items-center d-flex gap-3 text-white">
+				<button type="submit" style="background-color: #3f3f3f;" class="lh-2-5 flex-grow-1 justify-content-center align-items-center d-flex gap-3 text-white">
 					Crear Cuenta
 				</button>
 			</div>
