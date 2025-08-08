@@ -1,11 +1,11 @@
 <div>
     <section style="border-radius: var(--border);" class="d-flex justify-content-between align-items-center pb-3">
-        <h6 class="title-module fs-5">Reporte de citas médicas</h6>
+        <h6 class="title-module fs-5">Reporte de citas médicas día</h6>
         <div class="d-flex gap-3 align-items-center">
             <section class="dropdown dropdown-center">
-                <button class="d-flex justify-content-between align-items-center gap-3 py-2 px-3 btnAdd text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="d-flex justify-content-center align-items-center gap-3 py-2 px-3 btnAdd text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bi bi-download"></i>
-                    Exportar reporte
+                    <span class="text-white">Exportar reporte</span>
                 </button>
                 <ul class="dropdown-menu">
                     <li>
@@ -34,7 +34,8 @@
                                     </section>
                                 </div>
                                 <div class="modal-footer">
-                                    <button style="height: 2.5rem;" id="btnExport" type="submit" class="btn-green px-3 py-2 text-white">Exportar PDF
+                                    <button style="height: 2.5rem;" id="btnExport" type="submit" class="btn-green px-3 py-2 text-white">
+                                        Exportar PDF
                                         <i class="bi bi-file-earmark-pdf-fill"></i>
                                     </button>
                                 </div>

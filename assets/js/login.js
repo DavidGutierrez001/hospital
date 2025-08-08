@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					});
 					if (btnText) {
 						btnText.innerHTML = "Iniciar sesión";
-						btnText.classList.remove("loader-button");
+						loadingSpinner.classList.add("d-none");
 					}
 					return;
 				}
@@ -32,13 +32,12 @@ document.addEventListener("DOMContentLoaded", function () {
 				setTimeout(() => {
 					document.getElementById("form").submit();
 				}, 500);
+				
 			} catch (error) {
-				console.error("Login failed:", error.message);
-				alert(error.message);
 				if (btnText) {
 					btnText.innerHTML = "Iniciar sesión";
-					btnText.classList.remove("loader-button");
 				}
+				loadingSpinner.classList.remove("d-none");
 			}
 		});
 	}

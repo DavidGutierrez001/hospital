@@ -93,11 +93,10 @@
 
         <main class="dashboard-main d-flex flex-column gap-3">
             <header class="dashboard-header">
+                <button id="sidebarBtn" class="dashboard-header-nav-btn hamburger-btn position-relative" aria-label="Abrir menú lateral">
+                    <i class="bi bi-list fs-5"></i>
+                </button>
                 <div class="dashboard-header-nav d-flex align-items-center justify-content-end w-100 gap-3">
-
-                    <button id="sidebarBtn" class="dashboard-header-nav-btn hamburger-btn position-relative" aria-label="Abrir menú lateral">
-                        <i class="bi bi-list fs-5"></i>
-                    </button>
                     <div class="d-flex align-items-center gap-3">
                         <button class="dashboard-header-nav-btn position-relative" aria-label="Mensajes">
                             <i class="bi bi-envelope fs-5"></i>
@@ -148,6 +147,8 @@
             </div>
         </main>
     </div>
+
+    <div id="backDrop" class=""></div>
 
     <!-- Local -->
 

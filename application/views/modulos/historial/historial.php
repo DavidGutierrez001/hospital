@@ -100,7 +100,7 @@
             <th>MÉDICO</th>
             <th class="text-start">DOCUMENTO MÉDICO</th>
             <th>MOTIVO CONSULTA</th>
-            <th>ACCIONES</th>
+            <th class="text-center">ACCIONES</th>
         </thead>
         <tbody>
             <?php foreach ($historiales as $historial) { ?>
@@ -128,14 +128,23 @@
                         </div>
                     </td>
                     <td><?= htmlspecialchars($historial->motivo_consulta) ?></td>
-                    <td>
-                        <div>
-                            <button class="showDetails bg-transparent" data-id="<?= htmlspecialchars($historial->id_historial) ?>">
-                                <i style="color: var(--texto);" class="bi bi-stopwatch-fill fs-6"></i>
+                    <td class="text-center">
+                        <div class="dropdown">
+                            <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton<?= htmlspecialchars($historial->id_historial) ?>">
+                                <i class="bi bi-three-dots-vertical fs-6"></i>
                             </button>
-                            <button class="deleteDetails bg-transparent" data-id="<?= htmlspecialchars($historial->id_historial) ?>">
-                                <i style="color: var(--texto);" class="bi bi-trash-fill text-danger fs-6"></i>
-                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <button data-id="<?= htmlspecialchars($historial->id_historial) ?>" class="dropdown-item showDetails" type="button" title="Editar">
+                                        Ver historia médica
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item deleteDetails" data-id="<?= htmlspecialchars($historial->id_historial) ?>" type="button" title="Eliminar">
+                                        Eliminar historia médica
+                                    </button>
+                                </li>
+                            </ul>
                         </div>
                     </td>
                 </tr>
@@ -144,7 +153,7 @@
     </table>
 </div>
 
-<div id="offcanvasHistorial" class="off shadow">
+<div id="offcanvasHistorial" style="z-index: 9999;" class="off">
     <div class="d-flex justify-content-between align-items-center py-3">
         <h5 class="title-module">Detalles de la Historia Médica</h5>
         <button id="closeOffCanvas" type="button" class="btn-close text-reset" aria-label="Close"></button>

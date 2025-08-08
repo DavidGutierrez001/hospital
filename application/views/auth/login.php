@@ -2,7 +2,7 @@
     <div class="d-flex w-100 p-3 min-vh-100 justify-content-center align-items-center">
         <section id="containForm" class="form start-in px-3 py-5">
             <div class="d-flex flex-column text-secondary pb-4">
-                <h3 id="stepTitle" class="fw-bold fs-3 title-module">¡Bienvenido!</h3>
+                <h3 id="stepTitle" class="fw-bold fs-3">¡Bienvenido!</h3>
             </div>
 
             <form id="form" action="<?php echo base_url('login_user'); ?>" method="POST" class="gap-3 d-flex position-relative">

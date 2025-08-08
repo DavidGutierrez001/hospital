@@ -53,12 +53,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	const sidebarBtn = document.querySelector("#sidebarBtn");
 	const sidebarContent = document.querySelector("#sidebarContent");
+	const Backdrop = document.getElementById("backDrop");
 
 	if (sidebarBtn && sidebarContent) {
 		// Toggle sidebar al hacer click en el botón
 		sidebarBtn.addEventListener("click", (e) => {
 			e.stopPropagation(); // Evita que el click se propague al document
 			sidebarContent.classList.toggle("active");
+			Backdrop.classList.toggle("active");
 		});
 
 		// Cerrar sidebar al hacer click fuera de él
@@ -72,21 +74,23 @@ document.addEventListener("DOMContentLoaded", function () {
 				!isClickOnButton
 			) {
 				sidebarContent.classList.remove("active");
+				Backdrop.classList.remove("active");
 			}
 		});
 	} else {
 		console.warn("#sidebarBtn o #sidebarContent no encontrados");
 	}
 
-	const originalIcon = `<i class="bi bi-copy fs-6"></i>`;
+	const originalIcon = `<i style="color: var(--texto);" class="bi bi-copy fs-6"></i>`;
 
 	document.querySelectorAll(".copyButton").forEach((btn) => {
 		btn.addEventListener("click", function () {
-			const textToCopy = btn.closest(".copy-container")?.querySelector(".copyText")?.textContent;
+			const textToCopy = btn
+				.closest(".copy-container")
+				?.querySelector(".copyText")?.textContent;
 
 			if (!textToCopy) return;
 
-			// volvemos todos los botones a su icono original
 			document.querySelectorAll(".copyButton").forEach((b) => {
 				b.innerHTML = originalIcon;
 			});
@@ -94,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			navigator.clipboard
 				.writeText(textToCopy)
 				.then(() => {
-					btn.innerHTML = `<i class="bi bi-check-circle-fill fs-6 text-success"></i>`;
+					btn.innerHTML = `<i class="bi bi-check-circle-fill text-success fs-6"></i>`;
 				})
 				.catch(() => {
 					btn.innerHTML = `<i class="bi bi-x-circle text-danger fs-6"></i>`;

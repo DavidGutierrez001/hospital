@@ -1,4 +1,4 @@
-<ul class="nav nav-tabs" id="reportesTabs" role="tablist">
+<ul class="nav nav-tabs gap-3" id="reportesTabs" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" id="citas-tab" data-bs-toggle="tab" href="#citas" role="tab">Citas Médicas</a>
     </li>
@@ -6,7 +6,7 @@
         <a class="nav-link" id="pacientes-tab" data-bs-toggle="tab" href="#pacientes" role="tab">Pacientes</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="ventas-tab" data-bs-toggle="tab" href="#ventas" role="tab">Ventas de Farmacia</a>
+        <a class="nav-link" id="ventas-tab" data-bs-toggle="tab" href="#ventas" role="tab">Farmacia</a>
     </li>
 </ul>
 

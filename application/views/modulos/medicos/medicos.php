@@ -104,8 +104,8 @@
                     <th class="col text-start">DOCUMENTO</th>
                     <th scope="col">ESPECIALIDAD</th>
                     <th class="text-start" scope="col">CONTACTO</th>
-                    <th scope="col">ESTADO</th>
-                    <th scope="col">ACCIONES</th>
+                    <th scope="col" class="text-center">ESTADO</th>
+                    <th scope="col" class="text-center">ACCIONES</th>
                 </tr>
             </thead>
             <tbody>
@@ -115,10 +115,12 @@
                             <?php echo htmlspecialchars($medico->id_medico); ?>
                         </td>
                         <td>
-                            <?php echo htmlspecialchars($medico->primer_nombre . ' ' . $medico->segundo_nombre . ' ' . $medico->primer_apellido . ' ' . $medico->segundo_apellido); ?>
-                            <span class="text-secondary">
-                                <?php echo htmlspecialchars($medico->email); ?>
-                            </span>
+                            <div class="d-flex flex-column">
+                                <?php echo htmlspecialchars($medico->primer_nombre . ' ' . $medico->segundo_nombre . ' ' . $medico->primer_apellido . ' ' . $medico->segundo_apellido); ?>
+                                <span class="text-secondary fs-8">
+                                    <?php echo htmlspecialchars($medico->email); ?>
+                                </span>
+                            </div>
                         </td>
                         <td class="text-start" scope="row">
                             <div class="copy-container">
@@ -136,27 +138,32 @@
                         </td>
                         <td scope="row">
                             <?php if ($medico->activo): ?>
-                                <div class="d-flex">
-                                    <div class="d-flex gap-2 justify-content-center align-items-center p-1 rounded-1">
-                                        <span class="activo"></span>
-                                        <span class="text-success">Activo</span>
-                                    </div>
+                                <div class="d-flex gap-2 justify-content-center align-items-center p-1 rounded-1">
+                                    <span class="text-success">Activo</span>
                                 </div>
                             <?php else: ?>
-                                <div class="d-flex">
-                                    <div class="d-flex gap-2 justify-content-center align-items-center p-1 rounded-1">
-                                        <span class="inactivo"></span>
-                                        <span class="text-danger">Inactivo</span>
-                                    </div>
+                                <div class="d-flex gap-2 justify-content-center align-items-center p-1 rounded-1">
+                                    <span class="text-danger opacity-75">Inactivo</span>
                                 </div>
                             <?php endif; ?>
-                        <td>
-                            <button data-id="<?= htmlspecialchars($medico->id_medico) ?>" class="btnEdit btn btn-success btn-sm text-white">
-                                <i class="bi bi-pencil-square fs-6"></i>
-                            </button>
-                            <button class="btnDelete btn btn-danger btn-sm" id="<?= $medico->id_medico ?>">
-                                <i class="bi bi-trash-fill fs-6"></i>
-                            </button>
+                        <td class="text-center">
+                            <div class="dropdown">
+                                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton<?= htmlspecialchars($medico->id_medico) ?>">
+                                    <i class="bi bi-three-dots-vertical fs-6"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button data-id="<?= htmlspecialchars($medico->id_medico) ?>" class="dropdown-item btnEdit" type="button" title="Editar">
+                                            Modificar
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item btnDelete" data-id="<?= htmlspecialchars($medico->id_medico) ?>" type="button" title="Eliminar">
+                                            Eliminar
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
                         </td>
                     </tr>
                 <?php endforeach; ?>

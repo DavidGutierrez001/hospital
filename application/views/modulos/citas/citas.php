@@ -91,7 +91,7 @@
                     <th>PACIENTE</th>
                     <th>MÉDICO</th>
                     <th>ESTADO</th>
-                    <th>ACCIONES</th>
+                    <th class="text-center">ACCIONES</th>
                 </thead>
                 <tbody>
                     <?php if (count($citas) > 0) : ?>
@@ -105,17 +105,43 @@
                                 <td><?= htmlspecialchars($cita->medico_nombre) . ' ' . htmlspecialchars($cita->medico_apellido) ?></td>
                                 <td>
                                     <span class="<?=
-                                                    htmlspecialchars($cita->estado_cita) == 'Cancelada' ? 'status-canceled' : (htmlspecialchars($cita->estado_cita) == 'Asistida' ? 'status-success' : (htmlspecialchars($cita->estado_cita) == 'Programada' ? 'status-pending' : ''))
+                                                    htmlspecialchars($cita->estado_cita) == 'Cancelada' ? 'status-canceled' : (
+                                                        htmlspecialchars($cita->estado_cita) == 'Asistida' ? 'status-success' : (
+                                                            htmlspecialchars($cita->estado_cita) == 'Programada' ? 'text-warning' : (
+                                                                htmlspecialchars($cita->estado_cita) == 'Reagendada' ? 'status-reagendada' : ''
+                                                            )
+                                                        )
+                                                    )
                                                     ?>">
                                         <?= htmlspecialchars($cita->estado_cita) ?>
                                     </span>
                                 </td>
-                                <td>
+                                <td class="text-center">
+                                    <?php if ($cita->estado_cita !== 'Cancelada' && $cita->estado_cita !== 'Asistida') : ?>
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton<?= htmlspecialchars($cita->id_cita) ?>">
+                                                <i class="bi bi-three-dots-vertical fs-6"></i>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <button data-id="<?= htmlspecialchars($cita->id_cita) ?>" class="dropdown-item" type="button"
+                                                        data-bs-toggle="modal" data-bs-target="#modalReagendar<?= htmlspecialchars($cita->id_cita) ?>">
+                                                        Reagendar cita
+                                                    </button>
+                                                </li>
+                                                <?php if ($cita->estado_cita !== 'Cancelada') : ?>
+                                                    <li>
+                                                        <button class="dropdown-item btnAsistida" data-id="<?= htmlspecialchars($cita->id_cita) ?>" type="button">
+                                                            Cancelar cita
+                                                        </button>
+                                                    </li>
+                                                <?php endif; ?>
+                                            </ul>
+                                        </div>
+                                    <?php endif; ?>
+
                                     <div class="d-flex gap-1">
                                         <div>
-                                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalReagendar<?= htmlspecialchars($cita->id_cita) ?>">
-                                                <i class="bi bi-calendar-plus"></i>
-                                            </button>
                                             <div class="modal fade" id="modalReagendar<?= htmlspecialchars($cita->id_cita) ?>" tabindex="-1" aria-labelledby="modalReagendarLabel<?= htmlspecialchars($cita->id_cita) ?>">
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
@@ -149,12 +175,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <?php if (htmlspecialchars($cita->estado_cita) == 'Programada') : ?>
-                                            <button class="btnDelete btn btn-danger btn-sm" data-id="<?= htmlspecialchars(htmlspecialchars($cita->id_cita)) ?>">
-                                                <i class="bi bi-x-lg"></i>
-                                            </button>
-                                        <?php endif; ?>
                                     </div>
                                 </td>
                             </tr>

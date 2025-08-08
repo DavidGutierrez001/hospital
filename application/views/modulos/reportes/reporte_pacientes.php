@@ -1,11 +1,11 @@
 <div>
     <section class="d-flex justify-content-between align-items-center pb-3">
-        <h6 class="title-module fs-5">Reporte de pacientes atendidos</h6>
+        <h6 class="title-module fs-5">Reporte de pacientes atendidos mes</h6>
         <div class="d-flex gap-3 align-items-center">
             <section class="dropdown dropdown-center">
-                <button class="d-flex justify-content-between align-items-center gap-3 py-2 px-3 btnAdd text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="d-flex justify-content-center align-items-center gap-3 py-2 px-3 btnAdd text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bi bi-download"></i>
-                    Exportar reporte
+                    <span class="text-white">Exportar reporte</span>
                 </button>
                 <ul class="dropdown-menu">
                     <li>

@@ -224,7 +224,7 @@
                                                 </button>
                                             </li>
                                             <li>
-                                                <button id="btnDelete" data-id="<?= $producto->id_producto ?>" class="dropdown-item btnDelete">
+                                                <button id="btnDelete<?= $producto->id_producto ?>" data-id="<?= $producto->id_producto ?>" class="dropdown-item btnDelete">
                                                     Eliminar
                                                 </button>
                                             </li>
@@ -233,7 +233,6 @@
                                                     Agregar Existencias
                                                 </button>
                                             </li>
-
                                         </ul>
                                     </div>
                                 </td>

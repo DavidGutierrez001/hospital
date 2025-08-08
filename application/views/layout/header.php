@@ -28,7 +28,7 @@
                     <a class="nav-link" href="#">Sobre nosotros</a>
                 </li>
                 <li style="height: 50px;" class="nav-item d-flex align-items-center">
-                    <a class="border-0 btn-login text-white rounded-4 px-4 py-2" href="#">Empieza</a>
+                    <a class="border-0 btn-login text-white rounded-1 px-4 py-2" href="#">Empieza ahora</a>
                 </li>
             </ul>
         </nav>

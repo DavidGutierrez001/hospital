@@ -130,7 +130,7 @@
                     <th>NOMBRES</th>
                     <th>APELLIDOS</th>
                     <th class="text-start">DOCUMENTO</th>
-                    <th>ACCIONES</th>
+                    <th class="text-center">ACCIONES</th>
                 </tr>
             </thead>
             <tbody>
@@ -147,14 +147,24 @@
                                 </button>
                             </div>
                         </td>
-                        <td>
-                            <button data-id="<?= htmlspecialchars($p->id_paciente) ?>"
-                                class="btnEdit btn btn-success btn-sm text-white" type="button">
-                                <i class="bi bi-pencil-square fs-6"></i>
-                            </button>
-                            <button class="btnDelete btn btn-danger btn-sm" data-id="<?= htmlspecialchars($p->id_paciente) ?>" type="button">
-                                <i class="bi bi-trash-fill fs-6"></i>
-                            </button>
+                        <td class="text-center">
+                            <div class="dropdown">
+                                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton<?= htmlspecialchars($p->id_paciente) ?>">
+                                    <i class="bi bi-three-dots-vertical fs-6"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button data-id="<?= htmlspecialchars($p->id_paciente) ?>" class="dropdown-item btnEdit" type="button" title="Editar">
+                                            Modificar paciente
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item btnDelete" data-id="<?= htmlspecialchars($p->id_paciente) ?>" type="button" title="Eliminar">
+                                            Eliminar paciente
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
                         </td>
                     </tr>
                 <?php endforeach; ?>
