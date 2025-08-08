@@ -5,7 +5,7 @@
             <count-up class="fw-semibold fs-1"><?php echo htmlspecialchars(count($medicos)) ?></count-up>
         </div>
         <div>
-            <button class="btnAdd d-flex gap-2 px-3 py-2 shadow text-white align-items-center" data-bs-toggle="modal" data-bs-target="#addMedico">
+            <button aria-label="Agregar nuevo médico" class="btnAdd d-flex gap-2 px-3 py-2 shadow text-white align-items-center" data-bs-toggle="modal" data-bs-target="#addMedico">
                 <i class="bi bi-plus-circle-fill fs-5"></i>
                 <span class="text-white">Nuevo Médico</span>
             </button>
@@ -16,7 +16,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="title-module modal-title fs-5" id="addMedicoLabel">Nuevo Médico</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button aria-label="Cerrar" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form id="formMedico" class="d-flex align-items-center overflow-hidden">
@@ -125,7 +125,7 @@
                         <td class="text-start" scope="row">
                             <div class="copy-container">
                                 <span class="copyText"><?= htmlspecialchars($medico->documento) ?></span>
-                                <button class="bg-transparent copyButton">
+                                <button aria-label="Copiar" class="bg-transparent copyButton">
                                     <i style="color: var(--texto);" class="bi bi-copy fs-6"></i>
                                 </button>
                             </div>
@@ -148,17 +148,17 @@
                             <?php endif; ?>
                         <td class="text-center">
                             <div class="dropdown">
-                                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton<?= htmlspecialchars($medico->id_medico) ?>">
+                                <button aria-label="Menu" class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton<?= htmlspecialchars($medico->id_medico) ?>">
                                     <i class="bi bi-three-dots-vertical fs-6"></i>
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <button data-id="<?= htmlspecialchars($medico->id_medico) ?>" class="dropdown-item btnEdit" type="button" title="Editar">
+                                        <button aria-label="Editar" data-id="<?= htmlspecialchars($medico->id_medico) ?>" class="dropdown-item btnEdit" type="button" title="Editar">
                                             Modificar
                                         </button>
                                     </li>
                                     <li>
-                                        <button class="dropdown-item btnDelete" data-id="<?= htmlspecialchars($medico->id_medico) ?>" type="button" title="Eliminar">
+                                        <button aria-label="Eliminar" class="dropdown-item btnDelete" data-id="<?= htmlspecialchars($medico->id_medico) ?>" type="button" title="Eliminar">
                                             Eliminar
                                         </button>
                                     </li>
