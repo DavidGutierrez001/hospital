@@ -17,7 +17,7 @@
                             <count-up class="fw-semibold fs-1"><?php echo htmlspecialchars(count($ventas)) ?></count-up>
                         </div>
                         <div>
-                            <button class="btnAdd d-flex gap-2 px-3 py-2 text-white align-items-center" data-bs-toggle="modal" data-bs-target="#addVenta">
+                            <button class="btnAdd d-flex gap-2 px-3 py-2 text-white align-items-center shadow" data-bs-toggle="modal" data-bs-target="#addVenta">
                                 <i class="bi bi-plus-circle-fill fs-5"></i>
                                 <span class="text-white">Nueva Venta</span>
                             </button>
@@ -268,7 +268,7 @@
 
         <div class="tab-pane fade mt-3" id="nav-inventario" role="tabpanel" aria-labelledby="nav-inventario-tab" tabindex="0">
             <div class="d-flex flex-nowrap gap-3" style="min-height: 710px;">
-                <section class="w-50 border p-3 rounded-3">
+                <section class="w-50 p-3 rounded-3">
                     <h4 class="title-module">Entradas</h4>
                     <div>
                         <table class="table table-hover">
@@ -301,7 +301,7 @@
                         </table>
                     </div>
                 </section>
-                <section class="w-50 border p-3 rounded-3">
+                <section class="w-50 p-3 rounded-3">
                     <h4 class="title-module">Salidas</h4>
                     <div>
                         <table class="table table-hover">

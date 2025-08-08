@@ -10,7 +10,8 @@ class Pacientes_model extends CI_Model
 
     public function get_all()
     {
-        $this->db->select('usuarios.primer_nombre, usuarios.segundo_nombre, usuarios.primer_apellido, usuarios.segundo_apellido, pacientes.documento, pacientes.id_paciente');
+        $this->db->select('usuarios.primer_nombre, usuarios.segundo_nombre, usuarios.primer_apellido, usuarios.segundo_apellido, usuarios.email, 
+                            pacientes.documento, pacientes.id_paciente');
         $this->db->from('pacientes');
         $this->db->join('usuarios', 'pacientes.id_usuario = usuarios.id_usuario');
         return $this->db->get()->result();

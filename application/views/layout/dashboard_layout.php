@@ -35,7 +35,7 @@
 
     <div class="d-flex dashboard-contain min-vh-100 vh-100">
         <aside id="sidebarContent" class="sidebar p-3 position-fixed">
-            <img class="sidebar-logo" src="<?= base_url('/assets/img/logo6.svg') ?>" alt="Logo de la app">
+            <img class="sidebar-logo" src="<?= base_url('/assets/img/logo.svg') ?>" alt="Logo de la app">
 
             <nav class="sidebar-nav">
                 <ul class="nav-list d-flex flex-column gap-1">
@@ -148,10 +148,7 @@
         </main>
     </div>
 
-    <div id="backDrop" class=""></div>
-
     <!-- Local -->
-
     <script src="<?= base_url('assets/js/global.js') ?>"></script>
     <script src="<?= base_url('assets/js/dashboard.js') ?>"></script>
 

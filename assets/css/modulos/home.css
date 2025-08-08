@@ -1,0 +1,92 @@
+.main-home {
+	min-height: calc(100vh - 9rem);
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+    gap: 1rem;
+}
+
+.main-target {
+	grid-area: 1 / 1 / 3 / 3;
+	background-image: url("../../img/backgrounds/Sprinkle2.svg");
+	background-position: center;
+	max-height: 18rem;
+	padding: 2rem;
+}
+
+.fc-toolbar-title {
+	font-size: clamp(1rem, 0.5vw, 0.5rem) !important;
+}
+
+.calendar-home {
+	grid-area: 1 / 3 / 5 / 5;
+	color: var(--texto);
+	transition: all 0.3s ease-in-out;
+    padding-inline: 3rem;
+}
+
+.fc-day-today {
+	color: white;
+	background-color: #29b284 !important;
+	transition: all 0.3s ease-in-out;
+	border-radius: 0.5rem;
+}
+
+.fc-theme-standard th{
+	border: 0;
+}
+
+.fc-button {
+    background-color: var(--fondo) !important;
+    border: 0 !important;
+    color: var(--texto) !important;
+	transition: all 0.3s ease-in-out;
+}
+
+.fc {
+	border-radius: 1rem;
+	transition: all 0.3s ease-in-out;
+}
+
+.fc-scroller {
+    overflow: hidden !important;
+}
+
+th.fc-day,
+td.fc-day {
+	border: 0;
+	transition: all 0.3s ease-in-out;
+}
+
+td, .fc-scrollgrid {
+	border: 0 !important;
+}
+
+@media (max-width: 1024px) {
+	.main-home {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.main-target {
+		order: 1;
+		height: 10rem;
+		padding: 1rem;
+		width: 100%;
+		border-radius: 0.5rem;
+	}
+
+	.calendar-home {
+		order: 2;
+		width: 100%;
+		padding-inline: 0;
+		overflow-x: auto;
+	}
+
+	.fc {
+		height: 50rem !important;
+		max-width: 40rem;
+	}
+}

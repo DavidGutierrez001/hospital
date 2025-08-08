@@ -21,12 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		const calendar = new FullCalendar.Calendar(calendarEl, {
 			initialView: "listMonth",
 			themeSystem: "bootstrap5",
-			headerToolbar: {
-				left: "",
-				center: "listDay,listWeek,listMonth",
-				right: "",
-			},
 			height: "100%",
+			width: "100%",
 			selectable: false,
 			locale: "es",
 			timeZone: "local",
@@ -35,12 +31,9 @@ document.addEventListener("DOMContentLoaded", function () {
 				minute: "2-digit",
 				hour12: true,
 			},
-			events: "/hospital/citas/get_next_citas_json",
+			scrollY: false,
 			buttonText: {
 				today: "Hoy",
-				month: "Mes",
-				week: "Semana",
-				day: "Día",
 			},
 		});
 		calendar.render();

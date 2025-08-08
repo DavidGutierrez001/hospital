@@ -11,6 +11,7 @@
 	transition: all 0.3s ease-in-out;
 	max-width: 350px;
 	width: 100%;
+	background-color: var(--fondo) !important;
 }
 
 .fc-view {
@@ -19,8 +20,8 @@
 
 .fc {
 	font-size: 0.8rem;
-	background-color: var(--fondo-secundario);
-	color: #4e995f;
+	background-color: var(--fondo);
+	color: #29b284;
 	transition: background-color 0.3s ease-in-out;
 }
 
@@ -29,12 +30,12 @@
 }
 
 .fc-button {
-	background-color: #4e995f !important;
+	background-color: #29b284 !important;
 	border: 0 !important;
 }
 
 .fc-list-day-cushion {
-	background-color: var(--fondo-terciario) !important;
+	background-color: var(--fondo) !important;
 	transition: all 0.3s ease-in-out;
 	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 }
@@ -70,7 +71,7 @@
 }
 
 .fc-list-empty {
-	background-color: var(--fondo-secundario) !important;
+	background-color: var(--fondo) !important;
 	transition: all 0.3s ease-in-out !important;
 }
 

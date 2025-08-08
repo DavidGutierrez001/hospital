@@ -1,89 +1,96 @@
-<div class="target d-flex justify-content-end w-100 align-items-center rounded-3 p-3">
-    <div class="d-flex gap-3">
-        <button class="btnAdd d-flex gap-2 px-3 py-2 shadow text-white align-items-center" data-bs-toggle="modal" data-bs-target="#addHistorial">
-            <i class="bi bi-plus-circle-fill fs-5"></i>
-            <span class="text-white">Nueva Historia</span>
-        </button>
-        <div class="modal fade" id="addHistorial" tabindex="-1" aria-labelledby="addHistorialLabel">
-            <div style="max-width: 45rem;" class="modal-dialog modal-dialog-centered">
-                <div class="modal-content modal-xl">
-                    <div class="modal-header">
-                        <h1 class="title-module modal-title fs-5" id="addCitaLabel">Crear Historia Médica</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <span id="message-alert" class="d-flex w-100 alert alert-danger fs-8 d-none mb-3"></span>
-                        <form id="historialForm" class="d-flex align-items-center overflow-hidden" method="POST">
-                            <div id="formStep1" class="d-flex flex-column gap-3">
-                                <section class="d-flex gap-3">
-                                    <div class="d-flex flex-column w-50">
-                                        <label for="documento_paciente">Documento Paciente<span class="text-danger"> *</span></label>
-                                        <input type="text" id="documento_paciente" name="documento_paciente" class="form-control" required autocomplete="off">
-                                    </div>
-                                    <div class="d-flex flex-column w-50">
-                                        <label for="documento_medico">Documento Médico<span class="text-danger"> *</span></label>
-                                        <input type="text" id="documento_medico" name="documento_medico" class="form-control" required autocomplete="off">
-                                    </div>
-                                </section>
-                                <section class="d-flex gap-3">
-                                    <div class="d-flex flex-column w-100">
-                                        <label for="motivo_consulta">Motivo Consulta<span class="text-danger"> *</span></label>
-                                        <input type="text" id="motivo_consulta" name="motivo_consulta" class="form-control" required autocomplete="off">
-                                    </div>
-                                </section>
-                                <section class="d-flex gap-3">
-                                    <div class="d-flex flex-column w-100">
-                                        <label for="diagnostico">Diagnóstico<span class="text-danger"> *</span></label>
-                                        <textarea id="diagnostico" name="diagnostico" class="form-area" rows="4" required></textarea>
-                                    </div>
-                                </section>
-                                <section class="d-flex gap-3">
-                                    <div class="d-flex flex-column w-100">
-                                        <label for="tratamiento">Tratamiento<span class="text-danger"> *</span></label>
-                                        <textarea id="tratamiento" name="tratamiento" class="form-area" required></textarea>
-                                    </div>
-                                </section>
-                                <section class="d-flex gap-3">
-                                    <div class="d-flex flex-column w-100">
-                                        <label for="examen_fisico">Examen fisico<span class="text-danger"> *</span></label>
-                                        <textarea id="examen_fisico" name="examen_fisico" class="form-area" required></textarea>
-                                    </div>
-                                </section>
-                                <section class="d-flex gap-3">
-                                    <div class="d-flex flex-column w-100">
-                                        <label for="resultados_pruebas">Resultado Pruebas<span class="opacity-50 small fw-light"> (opcional)</span></label>
-                                        <textarea id="resultados_pruebas" name="resultados_pruebas" class="form-area"></textarea>
-                                    </div>
-                                </section>
-                                <section class="d-flex gap-3">
-                                    <div class="d-flex flex-column w-100">
-                                        <label for="antecedentes_personales">Antecedentes Personales<span class="opacity-50 small fw-light"> (opcional)</span></label>
-                                        <textarea id="antecedentes_personales" name="antecedentes_personales" class="form-area"></textarea>
-                                    </div>
-                                    <div class="d-flex flex-column w-100">
-                                        <label for="antecedentes_familiares">Antecedentes Familiares<span class="opacity-50 small fw-light"> (opcional)</span></label>
-                                        <textarea id="antecedentes_familiares" name="antecedentes_familiares" class="form-area"></textarea>
-                                    </div>
-                                </section>
-                                <section class="d-flex gap-3">
-                                    <div class="d-flex flex-column w-100">
-                                        <label for="estilo_vida">Estilo de Vida<span class="opacity-50 small fw-light"> (opcional)</span></label>
-                                        <textarea id="estilo_vida" name="estilo_vida" class="form-area"></textarea>
-                                    </div>
-                                </section>
-                                <section class="d-flex gap-3">
-                                    <div class="d-flex flex-column w-100">
-                                        <label for="notas_generales">Notas generales<span class="opacity-50 small fw-light"> (opcional)</span></label>
-                                        <textarea id="notas_generales" name="notas_generales" class="form-area"></textarea>
-                                    </div>
-                                </section>
-                                <button type="submit" id="btnAdd" class="btn-green d-flex justify-content-center align-items-center w-100 gap-2 mt-3">
-                                    Guardar Historia Medica
-                                    <i class="bi bi-check-circle-fill fs-5"></i>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+<div>
+    <div class="target d-flex justify-content-between w-100 p-3 align-items-center rounded-3 mb-4">
+        <div style="background-color:rgba(0, 0, 0, 0.09);" class="d-flex flex-column justify-content-between align-items-center text-white gap-2 p-3 rounded-3">
+            <h6 class="text-white fw-light">Total Historiales</h6>
+            <count-up class="fw-semibold fs-1"><?php echo htmlspecialchars(count($historiales)) ?></count-up>
+        </div>
+        <div>
+            <button class="btnAdd d-flex gap-2 px-3 py-2 shadow text-white align-items-center" data-bs-toggle="modal" data-bs-target="#addHistorial">
+                <i class="bi bi-plus-circle-fill fs-5"></i>
+                <span class="text-white">Nuevo Historial</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addHistorial" tabindex="-1" aria-labelledby="addHistorialLabel">
+        <div style="max-width: 45rem;" class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-xl">
+                <div class="modal-header">
+                    <h1 class="title-module modal-title fs-5" id="addCitaLabel">Crear Historia Médica</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <span id="message-alert" class="d-flex w-100 alert alert-danger fs-8 d-none mb-3"></span>
+                    <form id="historialForm" class="d-flex align-items-center overflow-hidden" method="POST">
+                        <div id="formStep1" class="d-flex flex-column gap-3">
+                            <section class="d-flex gap-3">
+                                <div class="d-flex flex-column w-50">
+                                    <label for="documento_paciente">Documento Paciente<span class="text-danger"> *</span></label>
+                                    <input type="text" id="documento_paciente" name="documento_paciente" class="form-control" required autocomplete="off">
+                                </div>
+                                <div class="d-flex flex-column w-50">
+                                    <label for="documento_medico">Documento Médico<span class="text-danger"> *</span></label>
+                                    <input type="text" id="documento_medico" name="documento_medico" class="form-control" required autocomplete="off">
+                                </div>
+                            </section>
+                            <section class="d-flex gap-3">
+                                <div class="d-flex flex-column w-100">
+                                    <label for="motivo_consulta">Motivo Consulta<span class="text-danger"> *</span></label>
+                                    <input type="text" id="motivo_consulta" name="motivo_consulta" class="form-control" required autocomplete="off">
+                                </div>
+                            </section>
+                            <section class="d-flex gap-3">
+                                <div class="d-flex flex-column w-100">
+                                    <label for="diagnostico">Diagnóstico<span class="text-danger"> *</span></label>
+                                    <textarea id="diagnostico" name="diagnostico" class="form-area" rows="4" required></textarea>
+                                </div>
+                            </section>
+                            <section class="d-flex gap-3">
+                                <div class="d-flex flex-column w-100">
+                                    <label for="tratamiento">Tratamiento<span class="text-danger"> *</span></label>
+                                    <textarea id="tratamiento" name="tratamiento" class="form-area" required></textarea>
+                                </div>
+                            </section>
+                            <section class="d-flex gap-3">
+                                <div class="d-flex flex-column w-100">
+                                    <label for="examen_fisico">Examen fisico<span class="text-danger"> *</span></label>
+                                    <textarea id="examen_fisico" name="examen_fisico" class="form-area" required></textarea>
+                                </div>
+                            </section>
+                            <section class="d-flex gap-3">
+                                <div class="d-flex flex-column w-100">
+                                    <label for="resultados_pruebas">Resultado Pruebas<span class="opacity-50 small fw-light"> (opcional)</span></label>
+                                    <textarea id="resultados_pruebas" name="resultados_pruebas" class="form-area"></textarea>
+                                </div>
+                            </section>
+                            <section class="d-flex gap-3">
+                                <div class="d-flex flex-column w-100">
+                                    <label for="antecedentes_personales">Antecedentes Personales<span class="opacity-50 small fw-light"> (opcional)</span></label>
+                                    <textarea id="antecedentes_personales" name="antecedentes_personales" class="form-area"></textarea>
+                                </div>
+                                <div class="d-flex flex-column w-100">
+                                    <label for="antecedentes_familiares">Antecedentes Familiares<span class="opacity-50 small fw-light"> (opcional)</span></label>
+                                    <textarea id="antecedentes_familiares" name="antecedentes_familiares" class="form-area"></textarea>
+                                </div>
+                            </section>
+                            <section class="d-flex gap-3">
+                                <div class="d-flex flex-column w-100">
+                                    <label for="estilo_vida">Estilo de Vida<span class="opacity-50 small fw-light"> (opcional)</span></label>
+                                    <textarea id="estilo_vida" name="estilo_vida" class="form-area"></textarea>
+                                </div>
+                            </section>
+                            <section class="d-flex gap-3">
+                                <div class="d-flex flex-column w-100">
+                                    <label for="notas_generales">Notas generales<span class="opacity-50 small fw-light"> (opcional)</span></label>
+                                    <textarea id="notas_generales" name="notas_generales" class="form-area"></textarea>
+                                </div>
+                            </section>
+                            <button type="submit" id="btnAdd" class="btn-green d-flex justify-content-center align-items-center w-100 gap-2 mt-3">
+                                Guardar Historia Medica
+                                <i class="bi bi-check-circle-fill fs-5"></i>
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -93,7 +100,7 @@
 <div class="main-content">
     <table class="table table-hover">
         <thead>
-            <th class="text-start">#</th>
+            <th class="text-center">#</th>
             <th>FECHA CREADA</th>
             <th>PACIENTE</th>
             <th class="text-start">DOCUMENTO</th>
@@ -105,7 +112,7 @@
         <tbody>
             <?php foreach ($historiales as $historial) { ?>
                 <tr>
-                    <td class="text-start"><?= htmlspecialchars($historial->id_historial) ?></td>
+                    <td class="text-center"><?= htmlspecialchars($historial->id_historial) ?></td>
                     <td><?= date('d-m-Y', strtotime($historial->fecha_creacion)) ?></td>
                     <td>
                         <?= htmlspecialchars($historial->paciente_primer_nombre) . ' ' . htmlspecialchars($historial->paciente_primer_apellido) ?>

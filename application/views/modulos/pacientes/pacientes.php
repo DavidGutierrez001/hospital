@@ -126,17 +126,18 @@
         <table id="tablaPacientes" class="table nowrap">
             <thead>
                 <tr>
-                    <th class="text-start">ID</th>
+                    <th class="text-center">#</th>
                     <th>NOMBRES</th>
                     <th>APELLIDOS</th>
                     <th class="text-start">DOCUMENTO</th>
+                    <th class="text-start">CORREO</th>
                     <th class="text-center">ACCIONES</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($pacientes as $p): ?>
                     <tr>
-                        <td class="text-start"><?php echo htmlspecialchars($p->id_paciente) ?></td>
+                        <td class="text-center"><?php echo htmlspecialchars($p->id_paciente) ?></td>
                         <td><?php echo htmlspecialchars($p->primer_nombre . ' ' . $p->segundo_nombre) ?></td>
                         <td><?php echo htmlspecialchars($p->primer_apellido . ' ' . $p->segundo_apellido) ?></td>
                         <td class="text-start">
@@ -147,6 +148,7 @@
                                 </button>
                             </div>
                         </td>
+                        <td class="text-start"><?= htmlspecialchars($p->email) ?></td>
                         <td class="text-center">
                             <div class="dropdown">
                                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton<?= htmlspecialchars($p->id_paciente) ?>">

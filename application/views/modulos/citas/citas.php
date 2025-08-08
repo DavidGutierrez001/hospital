@@ -131,7 +131,7 @@
                                                 </li>
                                                 <?php if ($cita->estado_cita !== 'Cancelada') : ?>
                                                     <li>
-                                                        <button class="dropdown-item btnAsistida" data-id="<?= htmlspecialchars($cita->id_cita) ?>" type="button">
+                                                        <button class="dropdown-item btnDelete" data-id="<?= htmlspecialchars($cita->id_cita) ?>" type="button">
                                                             Cancelar cita
                                                         </button>
                                                     </li>
@@ -139,45 +139,40 @@
                                             </ul>
                                         </div>
                                     <?php endif; ?>
-
-                                    <div class="d-flex gap-1">
-                                        <div>
-                                            <div class="modal fade" id="modalReagendar<?= htmlspecialchars($cita->id_cita) ?>" tabindex="-1" aria-labelledby="modalReagendarLabel<?= htmlspecialchars($cita->id_cita) ?>">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title title-module" id="modalReagendarLabel<?= htmlspecialchars($cita->id_cita) ?>">Reagendar cita</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                                                        </div>
-                                                        <form id="reagendarCita-<?= htmlspecialchars($cita->id_cita) ?>" method="POST">
-                                                            <div class="modal-body">
-                                                                <input type="hidden" name="id_cita" value="<?= htmlspecialchars($cita->id_cita) ?>">
-
-                                                                <div class="mb-3">
-                                                                    <label for="nueva_fecha<?= htmlspecialchars($cita->id_cita) ?>" class="form-label">Nueva fecha</label>
-                                                                    <input type="date" name="fecha_cita" id="nueva_fecha<?= htmlspecialchars($cita->id_cita) ?>" value="<?= $cita->fecha_cita ?>" class="form-control">
-                                                                </div>
-
-                                                                <div class="mb-3">
-                                                                    <label for="nueva_hora<?= htmlspecialchars($cita->id_cita) ?>" class="form-label">Nueva hora</label>
-                                                                    <input type="time" name="hora_inicio" id="nueva_hora<?= htmlspecialchars($cita->id_cita) ?>" value="<?= $cita->hora_inicio ?>" class="form-control">
-                                                                </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button"
-                                                                    class="btnReagendar reagendarCita btn-action w-100"
-                                                                    data-id="<?= htmlspecialchars(htmlspecialchars($cita->id_cita)) ?>">
-                                                                    Reagendar
-                                                                </button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </td>
                             </tr>
+                            <div class="modal fade" id="modalReagendar<?= htmlspecialchars($cita->id_cita) ?>" tabindex="-1" aria-labelledby="modalReagendarLabel<?= htmlspecialchars($cita->id_cita) ?>">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title title-module" id="modalReagendarLabel<?= htmlspecialchars($cita->id_cita) ?>">Reagendar cita</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                        </div>
+                                        <form id="reagendarCita-<?= htmlspecialchars($cita->id_cita) ?>" method="POST">
+                                            <div class="modal-body">
+                                                <input type="hidden" name="id_cita" value="<?= htmlspecialchars($cita->id_cita) ?>">
+
+                                                <div class="mb-3">
+                                                    <label for="nueva_fecha<?= htmlspecialchars($cita->id_cita) ?>" class="form-label">Nueva fecha</label>
+                                                    <input type="date" name="fecha_cita" id="nueva_fecha<?= htmlspecialchars($cita->id_cita) ?>" value="<?= $cita->fecha_cita ?>" class="form-control">
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="nueva_hora<?= htmlspecialchars($cita->id_cita) ?>" class="form-label">Nueva hora</label>
+                                                    <input type="time" name="hora_inicio" id="nueva_hora<?= htmlspecialchars($cita->id_cita) ?>" value="<?= $cita->hora_inicio ?>" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button"
+                                                    class="btnReagendar reagendarCita btn-action w-100"
+                                                    data-id="<?= htmlspecialchars(htmlspecialchars($cita->id_cita)) ?>">
+                                                    Reagendar
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         <?php endforeach; ?>
                     <?php else : ?>
                         <tr>

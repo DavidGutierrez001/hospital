@@ -12,23 +12,17 @@ class HomeController extends MY_Controller
 
     public function index()
     {
-        $data = $this->getHomePageData();
-        $this->load->view('layout/dashboard_layout', $data);
-    }
-
-    private function getHomePageData()
-    {
-        $pacientes = $this->Pacientes_model->count_users();
-        $medicos = $this->Medicos_model->count_users();
-
-        return [
+        $data = [
+            'vista' => 'modulos/home/home',
             'title' => 'Home - Royal Care',
             'css' => [
                 'assets/css/modulos/home.css',
             ],
-            'vista' => 'modulos/home/home',
-            'labels' => ['Médicos', 'Pacientes', 'Recepcionistas', 'Farmaceuticos'],
-            'valores' => [$medicos, $pacientes],
+            'js' => [
+                'assets/js/home.js',
+            ],
         ];
+
+        $this->load->view('layout/dashboard_layout', $data);
     }
 }
