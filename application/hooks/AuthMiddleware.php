@@ -6,7 +6,7 @@ function check_auth()
     $publicos = [
         'indexcontroller' => ['index'],
         'logincontroller' => ['login', 'login_view'],
-        'registercontroller' => ['register', 'register_view', 'verify_email'],
+        'registercontroller' => ['register_view', 'register', 'verify_email'],
         'emailvalidationcontroller' => ['verify_email'],
         'authcontroller' => ['logout'],
     ];

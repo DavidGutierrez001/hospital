@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			width: "100%",
 			selectable: false,
 			locale: "es",
+			events: "/hospital/citas/get_next_citas_json",
 			timeZone: "local",
 			eventTimeFormat: {
 				hour: "numeric",

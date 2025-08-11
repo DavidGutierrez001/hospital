@@ -6,7 +6,7 @@
                     <h6 class="text-white fw-light">Total Citas Médicas</h6>
                     <count-up class="fw-semibold fs-1"><?php echo htmlspecialchars(count($citas)) ?></count-up>
                 </div>
-                <button class="btnAdd d-flex gap-2 px-3 py-2 text-white align-items-center" data-bs-toggle="modal" data-bs-target="#addCita">
+                <button class="btnAdd d-flex gap-2 px-3 py-2 text-white align-items-center shadow" data-bs-toggle="modal" data-bs-target="#addCita">
                     <i class="bi bi-plus-circle-fill fs-5"></i>
                     <span class="text-white">Agendar cita</span>
                 </button>
